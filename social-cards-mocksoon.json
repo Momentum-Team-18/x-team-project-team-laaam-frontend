@@ -1,19 +1,19 @@
 {
-  "uuid": "1df7cff7-74ec-4381-a6af-c2c852afd3be",
+  "uuid": "9499d1bc-717a-427c-87a3-bb82493f9b0d",
   "lastMigration": 24,
-  "name": "QuestionBox API",
+  "name": "Demo social card API",
   "endpointPrefix": "api",
   "latency": 0,
-  "port": 3002,
+  "port": 3000,
   "routes": [
     {
-      "uuid": "e6a051ac-0545-49ec-b819-845f85ec1023",
+      "uuid": "425506a8-243b-463e-aa5e-63bedf0a7649",
       "documentation": "Create a user",
       "method": "post",
       "endpoint": "auth/users/",
       "responses": [
         {
-          "uuid": "b4e3f251-63c2-4e44-9df3-28dbfc19c6cf",
+          "uuid": "4d0a5aae-1a8a-4567-82de-602c30a2ea45",
           "body": "{\n    \"id\": 1,\n    \"username\": \"{{ body 'username' 'testuser' }}\"\n}",
           "latency": 50,
           "statusCode": 201,
@@ -39,13 +39,13 @@
       "responseMode": null
     },
     {
-      "uuid": "d5dd71d6-3a4f-4f45-927b-5f9e8d2a1fbe",
+      "uuid": "5a14b3ec-0961-44c4-b299-b5b352e7d29a",
       "documentation": "Get token for username and password",
       "method": "post",
       "endpoint": "auth/token/login/",
       "responses": [
         {
-          "uuid": "83938cc2-3ebc-46c5-b240-4cca140fca65",
+          "uuid": "c608bbfb-6e5b-4e15-88b0-0b33ca8d5944",
           "body": "{\n  \"non_field_errors\": [\n    \"Unable to log in with provided credentials.\"\n  ]\n}",
           "latency": 0,
           "statusCode": 403,
@@ -67,7 +67,7 @@
           "bodyType": "INLINE"
         },
         {
-          "uuid": "3ebaad5b-75a0-4466-959a-72c82d6e6d1a",
+          "uuid": "44687c84-4607-4824-acf9-2b0da411d4c2",
           "body": "{\n    \"auth_token\": \"testtoken\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -101,13 +101,13 @@
       "responseMode": null
     },
     {
-      "uuid": "3dab4804-30cb-4966-b04d-8b38a184aa7a",
+      "uuid": "e18d858b-aad3-47d5-9948-ef420423616a",
       "documentation": "Get my user info",
       "method": "get",
       "endpoint": "auth/users/me/",
       "responses": [
         {
-          "uuid": "c8e89601-7420-4514-b482-a2a3af97d89d",
+          "uuid": "2521604b-a55d-40af-ba40-170b503a335c",
           "body": "{\n  \"detail\": \"Invalid token.\"\n}",
           "latency": 0,
           "statusCode": 400,
@@ -129,7 +129,7 @@
           "bodyType": "INLINE"
         },
         {
-          "uuid": "b9a9db11-7ad8-4fa3-bccf-ad6233714d73",
+          "uuid": "347685db-0017-4770-b216-e6eb9bcde125",
           "body": "{\n    \"id\": 1,\n    \"username\": \"testuser\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -163,18 +163,23 @@
       "responseMode": null
     },
     {
-      "uuid": "afcd9d44-7299-45f7-80b2-809893105c5e",
-      "documentation": "Get a list of all questions",
+      "uuid": "892c2d91-b4f9-45d0-9f55-f363a3c3fccb",
+      "documentation": "Get a list of cards from my friends",
       "method": "get",
-      "endpoint": "questions/",
+      "endpoint": "cards/",
       "responses": [
         {
-          "uuid": "415e4b7a-acbf-4796-92f1-cf1787f00d3a",
+          "uuid": "6db98660-9324-4299-b91d-8a10cbe687f8",
           "body": "{}",
           "latency": 0,
           "statusCode": 401,
           "label": "",
-          "headers": [],
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
           "filePath": "",
           "sendFileAsBody": false,
           "rules": [],
@@ -186,8 +191,8 @@
           "bodyType": "INLINE"
         },
         {
-          "uuid": "2de0cd88-680f-4847-b6b4-fa3f44e1ba2d",
-          "body": "{\n    \"count\": 10,\n    \"results\": [\n        {{#repeat 10}}\n        {\n            \"id\": {{@index}},\n            \"author\": {\n                \"id\": {{ int 2 20 }},\n                \"username\": \"{{ lowercase (firstName) }}\"\n            },\n            \"title\": \"{{ lorem 5 }}\",\n            \"body\": \"{{ lorem 30 }}\",\n            \"tags\": {{{ someOf (array 'tag1' 'tag2' 'tag3' 'tag4' 'tag5') 0 3 true }}},\n            \"created_at\": \"{{ date '2021' '2022' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n        }\n        {{/repeat}}\n    ]\n}\n",
+          "uuid": "14f543b0-cb64-4b8c-9b64-a9ebff469824",
+          "body": "{\n    \"count\": 10,\n    \"results\": [\n        {{#repeat 10}}\n        {\n            \"id\": {{@index}},\n            \"author\": {\n                \"id\": {{ int 2 20 }},\n                \"username\": \"{{ lowercase (firstName) }}\"\n            },\n            \"url\": \"http://localhost:3000/api/cards/{{@index}}/\",\n            \"color\": \"{{ oneOf (array 'blue' 'yellow' 'eggshell' 'purple') }}\",\n            \"font\": \"{{ oneOf (array 'Raleway' 'Pangolin' 'Yellowtail' 'Merriweather') }}\",\n            \"border\": \"{{ oneOf (array 'links' 'solid' 'dashed' 'none') }}\",\n            \"message\": \"{{lorem 20}}\",\n            \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n        }\n        {{/repeat}}\n    ]\n}\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -220,71 +225,14 @@
       "responseMode": null
     },
     {
-      "uuid": "75b444bb-5f51-4f80-8930-ef988c5bce3c",
-      "documentation": "Get a list of questions I have asked",
+      "uuid": "27e77256-7fb9-4d72-9e26-88ff0c564652",
+      "documentation": "Get a list of all cards",
       "method": "get",
-      "endpoint": "questions/me/",
+      "endpoint": "cards/all/",
       "responses": [
         {
-          "uuid": "7f7058ec-a1ce-4466-b705-909f317a498c",
-          "body": "",
-          "latency": 0,
-          "statusCode": 401,
-          "label": "",
-          "headers": [],
-          "filePath": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "disableTemplating": false,
-          "rulesOperator": "OR",
-          "fallbackTo404": false,
-          "default": true,
-          "databucketID": "",
-          "bodyType": "INLINE"
-        },
-        {
-          "uuid": "6c6ca1d8-a7de-4d77-a2dd-af2b5d76445a",
-          "body": "\n    \"count\": 10,\n    \"results\": [\n        {{#repeat 10}}\n        {\n            \"id\": {{@index}},\n            \"title\": \"{{ lorem 5 }}\",\n            \"body\": \"{{ lorem 30 }}\",\n            \"tags\": {{{ someOf (array 'tag1' 'tag2' 'tag3' 'tag4' 'tag5') 0 3 true }}},\n            \"created_at\": \"{{ date '2021' '2022' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n        }\n        {{/repeat}}\n    ]\n}",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [
-            {
-              "key": "",
-              "value": ""
-            }
-          ],
-          "filePath": "",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "header",
-              "modifier": "Authorization",
-              "value": "Token testtoken",
-              "operator": "equals",
-              "invert": false
-            }
-          ],
-          "disableTemplating": false,
-          "rulesOperator": "OR",
-          "fallbackTo404": false,
-          "default": false,
-          "databucketID": "",
-          "bodyType": "INLINE"
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
-    },
-    {
-      "uuid": "1548d8bf-4f67-447e-a91f-3c3a569604c7",
-      "documentation": "Get a list of my answers",
-      "method": "get",
-      "endpoint": "answers/me",
-      "responses": [
-        {
-          "uuid": "ddbf5133-60d1-4199-bbd0-dbbd91463071",
-          "body": "{\n}",
+          "uuid": "3d5f8b67-0832-4268-8b9b-0c268f461428",
+          "body": "{}",
           "latency": 0,
           "statusCode": 401,
           "label": "",
@@ -305,8 +253,8 @@
           "bodyType": "INLINE"
         },
         {
-          "uuid": "be41be98-60b9-4165-a4ae-7b3956e6b927",
-          "body": " [\n  {{#repeat 10}}\n    {\n      \"id\": {{@index}},\n      \"question_id\": {{ int 1 99}},\n      \"text\": {{ lorem 20 }},\n      \"accepted\": {{ boolean }}\n    }\n{{/repeat}}\n]",
+          "uuid": "cfe2a400-3417-4b81-8227-e14a81aa7374",
+          "body": "{\n    \"count\": 10,\n    \"results\": [\n        {{#repeat 10}}\n        {\n            \"id\": {{@index}},\n            \"author\": {\n                \"id\": {{ int 2 20 }},\n                \"username\": \"{{ lowercase (firstName) }}\"\n            },\n            \"url\": \"http://localhost:3000/api/cards/{{@index}}/\",\n            \"color\": \"{{ oneOf (array 'blue' 'yellow' 'eggshell' 'purple') }}\",\n            \"font\": \"{{ oneOf (array 'Raleway' 'Pangolin' 'Yellowtail' 'Merriweather') }}\",\n            \"border\": \"{{ oneOf (array 'links' 'solid' 'dashed' 'none') }}\",\n            \"message\": \"{{lorem 20}}\",\n            \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n        }\n        {{/repeat}}\n    ]\n}\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -339,13 +287,75 @@
       "responseMode": null
     },
     {
-      "uuid": "f21cc3c2-b3ae-459a-9776-c675223a67e4",
-      "documentation": "Create new question",
+      "uuid": "0832b454-fbf9-41d8-9bbc-0073a7e82975",
+      "documentation": "Get a list of my cards",
+      "method": "get",
+      "endpoint": "cards/me/",
+      "responses": [
+        {
+          "uuid": "d068c2e6-256b-4e21-b1e0-f04fabd8ab20",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "disableTemplating": false,
+          "rulesOperator": "OR",
+          "fallbackTo404": false,
+          "default": true,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        },
+        {
+          "uuid": "5c055aee-e2fa-44f2-bfe2-447ab343b310",
+          "body": "{\n    \"count\": 10,\n    \"results\": [\n        {{#repeat 10}}\n        {\n            \"id\": {{@index}},\n            \"author\": {\n                \"id\": 1,\n                \"username\": \"testuser\"\n            },\n            \"url\": \"http://localhost:3000/api/cards/{{@index}}/\",\n            \"color\": \"{{ oneOf (array 'blue' 'yellow' 'eggshell' 'purple') }}\",\n            \"font\": \"{{ oneOf (array 'Raleway' 'Pangolin' 'Yellowtail' 'Merriweather') }}\",\n            \"border\": \"{{ oneOf (array 'links' 'solid' 'dashed' 'none') }}\",\n            \"message\": \"{{lorem 20}}\",\n            \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n        }\n        {{/repeat}}\n    ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Token testtoken",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "disableTemplating": false,
+          "rulesOperator": "OR",
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "53b62de7-710e-40d9-9920-7433a69fc178",
+      "documentation": "Create card",
       "method": "post",
-      "endpoint": "questions/",
+      "endpoint": "cards/",
       "responses": [
         {
-          "uuid": "35700298-20be-4c33-bf19-65711b7ce79d",
+          "uuid": "22792aaf-2b7b-4a56-9673-0ceb8766e2d5",
           "body": "{}",
           "latency": 0,
           "statusCode": 401,
@@ -367,8 +377,8 @@
           "bodyType": "INLINE"
         },
         {
-          "uuid": "728c3fdf-f46d-4b0f-b5a6-a6d42994e3d0",
-          "body": "{\n    \"id\": {{ int 1 50 }},\n    \"title\": \"{{ body 'title' }}\",\n    \"body\": \"{{ body 'body' }}\",\n    \"tags\": \"[]\",\n    \"created_at\": \"{{ now }}\"\n}\n",
+          "uuid": "d02355c3-bfcb-4094-87aa-85a4946ed85a",
+          "body": "{\n    \"author\": {\n        \"id\": 1,\n        \"username\": \"testuser\"\n    },\n    \"url\": \"http://localhost:3000/api/cards/{{ int 100 200 }}/\",\n    \"color\": \"{{ body 'color' }}\",\n    \"font\": \"{{ body 'font' }}\",\n    \"border\": \"{{ body 'border' }}\",\n    \"message\": \"{{ body 'message' }}\",\n    \"posted_at\": \"{{ now }}\"\n}\n",
           "latency": 0,
           "statusCode": 201,
           "label": "",
@@ -387,87 +397,11 @@
               "value": "Token testtoken",
               "operator": "equals",
               "invert": false
-            },
-            {
-              "target": "body",
-              "modifier": "title",
-              "value": "",
-              "invert": true,
-              "operator": "null"
             }
           ],
-          "disableTemplating": false,
-          "rulesOperator": "AND",
-          "fallbackTo404": false,
-          "default": false,
-          "databucketID": "",
-          "bodyType": "INLINE"
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
-    },
-    {
-      "uuid": "3a3175bb-5ea6-4c9d-b8f9-1a6b6e98b8e4",
-      "documentation": "Create a new answer to a question",
-      "method": "post",
-      "endpoint": "questions/:id/answers",
-      "responses": [
-        {
-          "uuid": "2c1f2080-abdc-49dc-b8c5-e6f2d5ef2aea",
-          "body": "{}",
-          "latency": 0,
-          "statusCode": 401,
-          "label": "",
-          "headers": [
-            {
-              "key": "",
-              "value": ""
-            }
-          ],
-          "filePath": "",
-          "sendFileAsBody": false,
-          "rules": [],
           "disableTemplating": false,
           "rulesOperator": "OR",
           "fallbackTo404": false,
-          "default": true,
-          "databucketID": "",
-          "bodyType": "INLINE"
-        },
-        {
-          "uuid": "a37097cf-c088-4ee7-9c15-c616b590267c",
-          "body": "{\n  \"id\": {{ int 1 99 }},\n  \"question_id\": {{ urlParam 'id'}},\n  \"text\": {{ lorem 20 }},\n  \"accepted\": false,\n}",
-          "latency": 0,
-          "statusCode": 201,
-          "label": "",
-          "headers": [
-            {
-              "key": "",
-              "value": ""
-            }
-          ],
-          "filePath": "",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "header",
-              "modifier": "Authorization",
-              "value": "Token testtoken",
-              "operator": "equals",
-              "invert": false
-            },
-            {
-              "target": "body",
-              "modifier": "title",
-              "value": "",
-              "invert": true,
-              "operator": "null"
-            }
-          ],
-          "disableTemplating": false,
-          "rulesOperator": "AND",
-          "fallbackTo404": false,
           "default": false,
           "databucketID": "",
           "bodyType": "INLINE"
@@ -477,18 +411,23 @@
       "responseMode": null
     },
     {
-      "uuid": "ce2d3ef9-8297-4b44-84f6-3efc1522dd2d",
-      "documentation": "Get one question and its answers",
+      "uuid": "2fa4e639-ccab-47b8-a87a-7cdf0cfb67cc",
+      "documentation": "Get one card",
       "method": "get",
-      "endpoint": "questions/:id/",
+      "endpoint": "cards/:id/",
       "responses": [
         {
-          "uuid": "82bcddf2-7314-43b7-9ee7-527ac31ab387",
+          "uuid": "1707368e-852b-47bc-961b-b3b1d3a107fe",
           "body": "{}",
           "latency": 0,
           "statusCode": 401,
           "label": "",
-          "headers": [],
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
           "filePath": "",
           "sendFileAsBody": false,
           "rules": [],
@@ -500,8 +439,8 @@
           "bodyType": "INLINE"
         },
         {
-          "uuid": "87098277-9e92-48d5-94cc-266aba111f1b",
-          "body": "{\n    \"id\": {{ urlParam 'id'}},\n    \"author\": {\n        \"id\": {{ int 2 20 }},\n        \"username\": \"{{ lowercase (firstName) }}\"\n    },\n   \"title\": \"{{ lorem 5 }}\",\n    \"body\": \"{{ lorem 30 }}\",\n    \"tags\": {{{ someOf (array 'tag1' 'tag2' 'tag3' 'tag4' 'tag5') 0 3 true }}},\n    \"answers\": [\n      {{#repeat 0 10 comma=true}}\n        {\n          \"id\": {{ int 1 100 }},\n          \"text\": {{ lorem 20 }},\n          \"author\": {\n            \"id\": {{ int 1 50 }},\n            \"username\": \"{{ lowercase (firstName) }}\"\n          },\n          \"accepted\": {{ boolean }}\n        }\n      {{/repeat}}\n      ],\n    \"created_at\": \"{{ date '2021' '2022' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n}\n",
+          "uuid": "fd913e2a-af96-4092-873e-db734716d00f",
+          "body": "{\n    \"id\": {{ urlParam 'id'}},\n    \"author\": {\n        \"id\": {{ int 2 20 }},\n        \"username\": \"{{ lowercase (firstName) }}\"\n    },\n    \"url\": \"http://localhost:3000/api/cards/{{ urlParam 'id'}}/\",\n    \"color\": \"{{ oneOf (array 'blue' 'yellow' 'eggshell' 'purple') }}\",\n    \"font\": \"{{ oneOf (array 'Raleway' 'Pangolin' 'Yellowtail' 'Merriweather') }}\",\n    \"border\": \"{{ oneOf (array 'links' 'solid' 'dashed' 'none') }}\",\n    \"message\": \"{{lorem 20}}\",\n    \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-04:00' }}\"\n}\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -534,18 +473,23 @@
       "responseMode": null
     },
     {
-      "uuid": "7b89241f-72b2-4d06-92b9-0047982f799a",
-      "documentation": "Update question",
+      "uuid": "984c0854-fb78-4f28-9160-3a8c1e094af9",
+      "documentation": "Update card",
       "method": "patch",
-      "endpoint": "questions/:id/",
+      "endpoint": "cards/:id/",
       "responses": [
         {
-          "uuid": "712982a8-ffcb-41c2-ad20-75f460e3f005",
+          "uuid": "b18d1a45-61c7-4d78-9a89-4c21d0c2499a",
           "body": "{}",
           "latency": 0,
           "statusCode": 401,
           "label": "",
-          "headers": [],
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
           "filePath": "",
           "sendFileAsBody": false,
           "rules": [],
@@ -557,8 +501,8 @@
           "bodyType": "INLINE"
         },
         {
-          "uuid": "d87c457c-1204-4555-9564-ac39d41f41e8",
-          "body": "{\n    \"id\": {{ urlParam 'id'}},\n    \"author\": {\n        \"id\": {{ int 2 20 }},\n        \"username\": \"{{ lowercase (firstName) }}\"\n    },\n   \"title\": \"{{ lorem 5 }}\",\n    \"body\": \"{{ lorem 30 }}\",\n    \"tags\": {{{ someOf (array 'tag1' 'tag2' 'tag3' 'tag4' 'tag5') 0 3 true }}},\n    \"created_at\": \"{{ date '2021' '2022' 'YYYY-MM-DDTHH:mm:ss-05:00' }}\"\n}\n",
+          "uuid": "6d7f8940-7bed-4f54-bfc5-44b756178b2e",
+          "body": "{\n    \"author\": {\n        \"id\": 1,\n        \"username\": \"testuser\"\n    },\n    \"id\": {{ urlParam 'id'}},\n    \"url\": \"http://localhost:3000/api/cards/{{ urlParam 'id'}}/\",\n    \"color\": \"{{ body 'color' }}\",\n    \"font\": \"{{ body 'font' }}\",\n    \"border\": \"{{ body 'border' }}\",\n    \"message\": \"{{ body 'message' }}\",\n    \"posted_at\": \"{{ date '2019' '2020' 'YYYY-MM-DDTHH:mm:ss-04:00' }}\"\n}\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -591,13 +535,13 @@
       "responseMode": null
     },
     {
-      "uuid": "2a8f4e54-74d3-4f03-8f76-87024d0aaec0",
-      "documentation": "Delete question",
+      "uuid": "a0e13c93-26c8-4e78-b532-1a462e094e9a",
+      "documentation": "Delete card",
       "method": "delete",
-      "endpoint": "questions/:id/",
+      "endpoint": "cards/:id/",
       "responses": [
         {
-          "uuid": "250aa8c0-2aeb-41d4-a96d-107512335268",
+          "uuid": "5fe2af94-551c-4648-94e8-a03c4ad95027",
           "body": "{}",
           "latency": 0,
           "statusCode": 401,
@@ -619,64 +563,7 @@
           "bodyType": "INLINE"
         },
         {
-          "uuid": "a642f148-269f-480f-8f31-be589d62cbd1",
-          "body": "{}\n",
-          "latency": 0,
-          "statusCode": 204,
-          "label": "",
-          "headers": [],
-          "filePath": "",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "header",
-              "modifier": "Authorization",
-              "value": "Token testtoken",
-              "operator": "equals",
-              "invert": false
-            }
-          ],
-          "disableTemplating": false,
-          "rulesOperator": "OR",
-          "fallbackTo404": false,
-          "default": false,
-          "databucketID": "",
-          "bodyType": "INLINE"
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
-    },
-    {
-      "uuid": "c140fda5-f2f1-4319-99e8-d5b7e2ca337e",
-      "documentation": "Delete an answer",
-      "method": "delete",
-      "endpoint": "answers/:Id/",
-      "responses": [
-        {
-          "uuid": "16f6b35b-ffaf-45be-942d-ad20fb2730af",
-          "body": "{}",
-          "latency": 0,
-          "statusCode": 401,
-          "label": "",
-          "headers": [
-            {
-              "key": "",
-              "value": ""
-            }
-          ],
-          "filePath": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "disableTemplating": false,
-          "rulesOperator": "OR",
-          "fallbackTo404": false,
-          "default": true,
-          "databucketID": "",
-          "bodyType": "INLINE"
-        },
-        {
-          "uuid": "16e79ee7-794e-47a7-89ae-28f7c8846210",
+          "uuid": "817e4687-4c6d-4d5e-80bc-2780e7727cfc",
           "body": "{}\n",
           "latency": 0,
           "statusCode": 204,
@@ -710,14 +597,14 @@
       "responseMode": null
     },
     {
-      "uuid": "4d196689-dc66-4897-85c8-47b4385f1ebf",
-      "documentation": "Mark an answer as accepted ",
-      "method": "patch",
-      "endpoint": "answers/:Id/",
+      "uuid": "188bb665-b1a6-4e7d-8e3f-bcac0cdec892",
+      "documentation": "Get a list of my friends",
+      "method": "get",
+      "endpoint": "friends/",
       "responses": [
         {
-          "uuid": "3c6dff56-1b50-4158-ac16-b9827cba0688",
-          "body": "",
+          "uuid": "e5a23c87-80f0-4c97-957a-c7f08d6455b7",
+          "body": "{}",
           "latency": 0,
           "statusCode": 401,
           "label": "",
@@ -738,54 +625,158 @@
           "bodyType": "INLINE"
         },
         {
-          "uuid": "f6ca0391-8c40-4186-9c50-d5bc4b48c78b",
-          "body": "{\n  \"id\": {{ urlParam 'id'}},\n  \"question_id\": {{ int 1 99}},\n  \"text\": {{ lorem 20 }},\n  \"accepted\": \"true\"\n}",
+          "uuid": "19481555-a2cd-4036-8e17-650fdee87b06",
+          "body": "[\n{{#repeat 10}}\n    {\n        \"id\": {{ int 2 20 }},\n        \"username\": \"{{ lowercase (firstName) }}\"\n    }\n{{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
           "filePath": "",
-          "databucketID": "",
           "sendFileAsBody": false,
           "rules": [
             {
-              "target": "body",
-              "modifier": "accepted",
-              "value": "true",
-              "invert": false,
-              "operator": "equals"
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Token testtoken",
+              "operator": "equals",
+              "invert": false
             }
           ],
-          "rulesOperator": "OR",
           "disableTemplating": false,
+          "rulesOperator": "OR",
           "fallbackTo404": false,
-          "default": false
-        },
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b3f29335-e487-4c8d-a4a7-f1238e0391dc",
+      "documentation": "Add a friend",
+      "method": "post",
+      "endpoint": "friends/",
+      "responses": [
         {
-          "uuid": "10d58f64-3c2a-4baa-b0ed-c2ab3d850358",
+          "uuid": "7db3d66d-23d9-4fab-bbf7-8580afcce201",
           "body": "{}",
           "latency": 0,
-          "statusCode": 400,
-          "label": "If the body of the request does not contain the key ''accepted\"",
-          "headers": [],
-          "bodyType": "INLINE",
+          "statusCode": 401,
+          "label": "",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
           "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "disableTemplating": false,
+          "rulesOperator": "OR",
+          "fallbackTo404": false,
+          "default": true,
           "databucketID": "",
+          "bodyType": "INLINE"
+        },
+        {
+          "uuid": "c59a243f-77d4-499e-bad7-78a3e78dc91c",
+          "body": "{\n    \"id\": {{ body 'id' }},\n    \"username\": \"{{ lowercase (firstName) }}\"\n}\n",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
           "sendFileAsBody": false,
           "rules": [
             {
-              "target": "body",
-              "modifier": "accepted",
-              "value": "",
-              "invert": false,
-              "operator": "null"
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Token testtoken",
+              "operator": "equals",
+              "invert": false
             }
           ],
-          "rulesOperator": "OR",
           "disableTemplating": false,
+          "rulesOperator": "OR",
           "fallbackTo404": false,
-          "default": false
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "adc2eb15-9909-462b-8ce5-b4a9452fee37",
+      "documentation": "Remove",
+      "method": "delete",
+      "endpoint": "friends/:userId/",
+      "responses": [
+        {
+          "uuid": "5e8ebb3d-76b1-4aa5-9cfa-3983046fb8a2",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "disableTemplating": false,
+          "rulesOperator": "OR",
+          "fallbackTo404": false,
+          "default": true,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        },
+        {
+          "uuid": "801fe311-6cfe-4867-ab00-28b385da3b19",
+          "body": "{}\n",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Token testtoken",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "disableTemplating": false,
+          "rulesOperator": "OR",
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE"
         }
       ],
       "enabled": true,
