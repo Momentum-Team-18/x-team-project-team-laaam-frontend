@@ -24,10 +24,15 @@ const CardFeed = ({ token }) => {
     <>
       <div>
         <h1>Card Feed</h1>
-        <div className="containter">
-          <div className="card>">
+        <div className="container">
+          <div>
             {cards.map((card) => (
-              <ul>{card.headline}</ul>
+              <ul className="card" key={card.id}>
+                <div className="img">📷</div>
+                <h1>{card.headline}</h1>
+                <p>{card.front_text}</p>
+                <p>{card.back_text}</p>
+              </ul>
             ))}
           </div>
         </div>
