@@ -10,9 +10,11 @@ function App() {
     return <Login setToken={setToken} />;
   }
 
+  console.log(token);
+
   return (
     <>
-      <CardFeed token={token} />
+
     </>
   );
 }
