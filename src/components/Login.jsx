@@ -1,25 +1,28 @@
 import { useState } from "react";
 import axios from "axios";
 
+// to get a token
+// form to make username and password
+
 const Login = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const baseURL = "http://cards-q6a8.onrender.com/";
+  const baseURL = "https://cards-q6a8.onrender.com/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${baseURL}auth/token/login/`, {
+      .post(`${baseURL}auth/token/login`, {
+        // toLowerCase used for better UX, user can enter username anyway
         username: username.toLowerCase(),
         password: password,
       })
       .then((res) => setToken(res.data.auth_token));
-    console.log(res.data.auth_token);
   };
 
   return (
     <>
-      <form className="m-5" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Username</label>
           <input
@@ -27,6 +30,7 @@ const Login = ({ setToken }) => {
             name="name"
             id="name"
             value={username}
+            // as the value in input changes, it's setting the value to setUserName
             onChange={(e) => setUsername(e.target.value)}
             required
           />
