@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Login from "./components/Login";
+import CardFeed from "./components/CardFeed";
 
 function App() {
   const [token, setToken] = useState("");
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <>
-      <h1>Feed of Cards</h1>
+
     </>
   );
 }
