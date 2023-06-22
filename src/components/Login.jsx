@@ -18,6 +18,7 @@ const Login = ({ setToken }) => {
         password: password,
       })
       .then((res) => setToken(res.data.auth_token));
+    console.log("hi i'm getting a token");
   };
 
   return (

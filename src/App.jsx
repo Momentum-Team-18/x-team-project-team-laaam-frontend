@@ -9,9 +9,11 @@ function App() {
     return <Login setToken={setToken} />;
   }
 
+  console.log(token);
+
   return (
     <>
-      <h1>Login Page</h1>
+      <h1>Feed of Cards</h1>
     </>
   );
 }
