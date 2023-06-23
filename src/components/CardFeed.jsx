@@ -32,6 +32,8 @@ const CardFeed = ({ token }) => {
                 <h1>{card.headline}</h1>
                 <p>{card.front_text}</p>
                 <p>{card.back_text}</p>
+                <p>Created by: {card.sent_by_user}</p>
+                <p>Sent to: {card.sent_to_user}</p>
               </ul>
             ))}
           </div>
