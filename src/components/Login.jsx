@@ -14,6 +14,7 @@ const Login = ({ setToken }) => {
     axios
       .post(`${baseURL}auth/token/login`, {
         // toLowerCase used for better UX, user can enter username anyway
+        // left needs to match with database keypair
         username: username.toLowerCase(),
         password: password,
       })
@@ -25,7 +26,7 @@ const Login = ({ setToken }) => {
     <>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Username</label>
+          <label htmlFor="name">Username: </label>
           <input
             type="text"
             name="name"
@@ -37,7 +38,7 @@ const Login = ({ setToken }) => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password: </label>
           <input
             type="password"
             name="password"
