@@ -4,14 +4,13 @@ import axios from "axios";
 // pass token
 // create card, load preview
 
-const NewCard = ({ token, card }) => {
+const NewCard = ({ token }) => {
   const [cardColor, setCardColor] = useState("");
   const [border, setBorder] = useState("");
   const [font, setFont] = useState("");
   const [frontText, setFrontText] = useState("");
   const [backText, setBackText] = useState("");
   const [headline, setHeadline] = useState("");
-  const [cardPreview, setCardPreview] = useState();
 
   const baseURL = "https://cards-q6a8.onrender.com/";
 
@@ -22,43 +21,34 @@ const NewCard = ({ token, card }) => {
   // axios get request for displaying preview of card.
   // create handles for submitting, picking dropdowns
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   axios.post(
-  //     `${baseURL}api/cards`,
-  //     {
-  //       background_color: backgroundColor,
-  //     },
-  //     {
-  //       headers: {
-  //         Authorization: `Token ${token}`,
-  //       },
-  //     }.then((res) => {
-  //       setBackgroundColor("");
-  //     })
-  //   );
-  // };
-
-  // const handleDisplay = (e) => {
-  //   e.preventDefault();
-  //   axios.get(
-  //     `${baseURL}api/cards`,
-  //     {
-  //       background_color: backgroundColor,
-  //     },
-  //     {
-  //       headers: {
-  //         Authorization: `Token ${token}`,
-  //       },
-  //     }.then((res) => {
-  //       setBackgroundColor("");
-  //     })
-  //   );
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(
+      `${baseURL}api/cards`,
+      {
+        background_color: cardColor,
+        date_created: "",
+        headline: headline,
+      },
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      }.then((res) => {
+        setCardColor("");
+      })
+    );
+  };
 
   const handleChange = (userInput, e) => {
     if (userInput === "cardColor") {
       setCardColor(e.target.value);
+    }
+    if (userInput === "headline") {
+      setHeadline(e.target.value);
+    }
+    if (userInput === "font") {
+      setFont(e.target.value);
     }
   };
 
@@ -69,6 +59,7 @@ const NewCard = ({ token, card }) => {
   // };
   // <option onClick={handelClickColor} className={isPink ? 'pink-background'}>Pink</option>
   console.log(cardColor);
+  console.log(font);
 
   // const handleDisplay = (preview, e) => {
   //   if (preview === ""
@@ -85,31 +76,31 @@ const NewCard = ({ token, card }) => {
       <div className="create-card">
         <div>
           <h1>Create a Card</h1>
-          {/* <form onSubmit={handleSubmit}> */}
-          <form className="form">
+          <form onSubmit={handleSubmit}>
+            <label></label>
+            <input placeholder="Please enter a headline for your card."></input>
             <label for="color-select">Background Color </label>
             <select
               id="color-select"
               onChange={(e) => handleChange("cardColor", e)}
             >
               <option value="">--Please choose an color--</option>
-              <option value="Pink">Pink</option>
-              <option value="Blue">Blue</option>
-              <option value="Yellow">Yellow</option>
-              <option value="Green">Green</option>
+              <option value="pink">Pink</option>
+              <option value="blue">Blue</option>
+              <option value="yellow">Yellow</option>
+              <option value="green">Green</option>
             </select>
           </form>
         </div>
         <div className="form">
           <form>
             <label for="font-select">Font </label>
-            <select id="font-select">
+            <select id="font-select" onChange={(e) => handleChange("font", e)}>
               <option value="">--Please choose an font--</option>
               <option value="Serif">Serif</option>
               <option value="Sans">Sans</option>
-              <option value="Sans Serif">Sans Serif</option>
-              <option value="Times New Roman">Times New Roman </option>
-              <option value="Arel">Ariel</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Arial">Arial</option>
             </select>
             <br></br>
             <input type="submit"></input>
@@ -119,9 +110,11 @@ const NewCard = ({ token, card }) => {
 
       <div className="create-card">
         <div className="card">
-          <div className="img">📷 {cardColor}</div>
+          <div className="img" style={{ backgroundColor: cardColor }}>
+            📷 {cardColor}
+          </div>
           <h1></h1>
-          <p></p>
+          <p style={{ fontFamily: font }}>Hey what's going on</p>
           <p></p>
           <p>Created by: </p>
           <p>Sent to:</p>

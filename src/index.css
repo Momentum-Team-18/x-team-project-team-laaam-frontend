@@ -39,14 +39,11 @@
   min-width: 500px;
   background-color: aquamarine;
   justify-content: center;
+  
 }
 
 .form {
-  display: flex;
-  flex: wrap;
-  background-color: rgb(135, 164, 73);
+  background-color: white);
 }
 
-.pink-background {
-  background-color: pink;
-}
+
