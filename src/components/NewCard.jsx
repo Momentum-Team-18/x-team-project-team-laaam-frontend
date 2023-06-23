@@ -5,12 +5,13 @@ import axios from "axios";
 // create card, load preview
 
 const NewCard = ({ token, card }) => {
-  const [backgroundColor, setBackgroundColor] = useState("");
+  const [cardColor, setCardColor] = useState("");
   const [border, setBorder] = useState("");
   const [font, setFont] = useState("");
   const [frontText, setFrontText] = useState("");
   const [backText, setBackText] = useState("");
   const [headline, setHeadline] = useState("");
+  const [cardPreview, setCardPreview] = useState();
 
   const baseURL = "https://cards-q6a8.onrender.com/";
 
@@ -56,11 +57,18 @@ const NewCard = ({ token, card }) => {
   // };
 
   const handleChange = (userInput, e) => {
-    if (userInput === "backgroundColor") {
-      setBackgroundColor(e.target.value);
+    if (userInput === "cardColor") {
+      setCardColor(e.target.value);
     }
   };
-  console.log(backgroundColor);
+
+  // changing color of display card
+  // const [isPink, setIsPink] = useState(false);
+  // const handelClickColor = () => {
+  //   setIsPink(!isPink);
+  // };
+  // <option onClick={handelClickColor} className={isPink ? 'pink-background'}>Pink</option>
+  console.log(cardColor);
 
   // const handleDisplay = (preview, e) => {
   //   if (preview === ""
@@ -78,42 +86,40 @@ const NewCard = ({ token, card }) => {
         <div>
           <h1>Create a Card</h1>
           {/* <form onSubmit={handleSubmit}> */}
-          <form>
+          <form className="form">
             <label for="color-select">Background Color </label>
             <select
               id="color-select"
-              onChange={(e) => handleChange("backgroundColor", e)}
+              onChange={(e) => handleChange("cardColor", e)}
             >
-              <option value="">--Please choose an option--</option>
+              <option value="">--Please choose an color--</option>
               <option value="Pink">Pink</option>
               <option value="Blue">Blue</option>
               <option value="Yellow">Yellow</option>
               <option value="Green">Green</option>
             </select>
+          </form>
+        </div>
+        <div className="form">
+          <form>
+            <label for="font-select">Font </label>
+            <select id="font-select">
+              <option value="">--Please choose an font--</option>
+              <option value="Serif">Serif</option>
+              <option value="Sans">Sans</option>
+              <option value="Sans Serif">Sans Serif</option>
+              <option value="Times New Roman">Times New Roman </option>
+              <option value="Arel">Ariel</option>
+            </select>
+            <br></br>
             <input type="submit"></input>
           </form>
         </div>
-
-        <form>
-          <select id="font-select">
-            <label>Font</label>
-            <option value="Serif">Serif</option>
-            <option value="Sans">Sans</option>
-            <option value="Sans Serif">Sans Serif</option>
-            <option value="Times New Roman">Times New Roman </option>
-            <option value="Arel">Ariel</option>
-          </select>
-        </form>
       </div>
 
-      <form></form>
-      <select>
-        <lable></lable>
-      </select>
-
-      <div className="container">
+      <div className="create-card">
         <div className="card">
-          <div className="img">📷</div>
+          <div className="img">📷 {cardColor}</div>
           <h1></h1>
           <p></p>
           <p></p>
