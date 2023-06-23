@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <CardFeed token={token} />
+        <CardFeed token={token} />
     </>
   );
 }
