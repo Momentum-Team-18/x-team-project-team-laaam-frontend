@@ -60,12 +60,11 @@ const NewCard = ({ token }) => {
     }
   };
 
-  console.log(`i picked a background color of "${cardColor}"`);
-  console.log(`i picked a border color of "${borderColor}"`);
-  console.log(`this is the headline: "${headline}"`);
-  console.log(`i chose this font: "${font}"`);
   console.log(cardColor);
   console.log(font);
+  console.log(headline);
+  console.log(borderColor);
+  console.log(textColor);
 
   return (
     // return a form
