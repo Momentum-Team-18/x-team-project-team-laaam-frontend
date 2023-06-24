@@ -9,8 +9,9 @@ const NewCard = ({ token }) => {
   const [borderColor, setBorderColor] = useState("");
   const [font, setFont] = useState("");
   const [frontText, setFrontText] = useState("");
+
   const [headline, setHeadline] = useState("");
-  const [textColor, setTextColor] = useState("");
+  const [textColor, setTextColor] = useState('')
 
   const baseURL = "https://cards-q6a8.onrender.com/";
 
@@ -29,8 +30,6 @@ const NewCard = ({ token }) => {
         background_color: cardColor,
         date_created: "",
         headline: headline,
-        border_color: borderColor,
-        font_color: textColor,
       },
       {
         headers: {
@@ -56,15 +55,12 @@ const NewCard = ({ token }) => {
       setBorderColor(e.target.value);
     }
     if (userInput === "textColor") {
-      setTextColor(e.target.value);
+        setTextColor(e.target.value);
     }
   };
 
   console.log(cardColor);
   console.log(font);
-  console.log(headline);
-  console.log(borderColor);
-  console.log(textColor);
 
   return (
     // return a form
@@ -76,7 +72,7 @@ const NewCard = ({ token }) => {
         <div>
           <h1>Create a Card</h1>
           <div className="form-input">
-            <form className="form" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <label for="color-select">Background Color </label>
               <select
                 id="color-select"
@@ -119,8 +115,8 @@ const NewCard = ({ token }) => {
                     <option value="green">Green</option>
                     <option value="white">White</option>
                   </select>
-                </form>
-                <form>
+                  </form>
+                  <form>
                   <label for="borderColor-select"> Font Color</label>
                   <select
                     id="textColor-select"
@@ -135,13 +131,8 @@ const NewCard = ({ token }) => {
                   </select>
                   <br></br>
                   <label for="headline">Headline </label>
-                  <input
-                    value={headline}
-                    type="text"
-                    placeholder="Please enter a headline for your card."
-                    onChange={(e) => handleChange("headline", e)}
-                  ></input>
-                  <br></br>
+              <input placeholder="Please enter a headline for your card."></input>
+              <br></br>
                   <input type="submit"></input>
                 </form>
               </div>
@@ -154,11 +145,10 @@ const NewCard = ({ token }) => {
           style={{ backgroundColor: cardColor, borderColor: borderColor }}
         >
           <div className="img">📷 {cardColor}</div>
-          <h1 style={{ fontFamily: font, color: textColor }}>{headline}</h1>
-          <p style={{ fontFamily: font, color: textColor }}>
-            Hey what's going on
-          </p>
-          <p style={{ fontFamily: font, color: textColor }}>Created by:</p>
+          <h1 style={{ fontFamily: font, color : textColor }}>DEAR PERSON</h1>
+          <p style={{ fontFamily: font, color : textColor }}>Hey what's going on</p>
+          <p style={{ fontFamily: font, color : textColor }}>Created by: </p>
+          <p style={{ fontFamily: font, color : textColor }}>Sent to:</p>
         </div>
       </div>
     </>
