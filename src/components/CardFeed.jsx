@@ -18,7 +18,7 @@ const CardFeed = ({ token }) => {
       });
   }, [token]);
 
-  console.log(cards);
+  // console.log(cards);
 
   return (
     <>
