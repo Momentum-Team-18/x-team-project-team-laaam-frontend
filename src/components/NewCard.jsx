@@ -30,7 +30,7 @@ const NewCard = ({ token }) => {
       `${baseURL}api/cards`,
       {
         background_color: cardColor,
-        date_created: "",
+        // date_created: "",
         headline: headline,
         border_color: borderColor,
         font_color: textColor,
@@ -86,10 +86,10 @@ const NewCard = ({ token }) => {
                 onChange={(e) => handleChange("cardColor", e)}
               >
                 <option value="">--Please choose a color--</option>
-                <option value="pink">Pink</option>
-                <option value="blue">Blue</option>
-                <option value="yellow">Yellow</option>
-                <option value="green">Green</option>
+                <option value="Pink">Pink</option>
+                <option value="Blue">Blue</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Green">Green</option>
               </select>
             </form>
             <div className="form">
