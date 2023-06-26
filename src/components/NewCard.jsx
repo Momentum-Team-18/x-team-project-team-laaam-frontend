@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {NavLink} from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 
 // pass token
 // create card, load preview
@@ -73,11 +73,17 @@ const NewCard = ({ token }) => {
     // Create Card button to submit/update database
 
     <>
-    <div>
+      <div>
         <h2>
-        <NavLink to='/' class Name="button">Card Feed Link</NavLink>
+          <Link to="/" className="button">
+            Card Feed Link
+          </Link>
+          <Link to="/test" className="button">
+            Test
+          </Link>
         </h2>
-    </div>
+      </div>
+      {/* < NavBar /> */}
 
       <div className="create-card">
         <div>
