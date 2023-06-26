@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {Link} from 'react-router-dom';
+// import {NavBar} from '/components/NavBar'
+
 
 const CardFeed = ({ token }) => {
   const [cards, setCards] = useState([]);
@@ -22,10 +25,18 @@ const CardFeed = ({ token }) => {
 
   return (
     <>
+    {/* <NavBar /> */}
+    <div>
+        <h2>
+        <Link to='/newcard' class Name="button">Create New Card</Link>
+        </h2>
+    </div>
+
       <div>
         <h1>Card Feed</h1>
         <div className="container">
           <div>
+            <Link to='./cardfeed/cardID'>
             {cards.map((card) => (
               <ul className="card" key={card.id}>
                 <div className="img">📷</div>
@@ -36,6 +47,7 @@ const CardFeed = ({ token }) => {
                 <p>Sent to: {card.sent_to_user}</p>
               </ul>
             ))}
+             </Link>
           </div>
         </div>
       </div>
