@@ -28,7 +28,7 @@ const CardFeed = ({ token }) => {
     {/* <NavBar /> */}
     <div>
         <h2>
-        <Link to='/newcard' class Name="button">Create New Card</Link>
+        <Link to='/newcard' className="button">Create New Card</Link>
         </h2>
     </div>
 

@@ -3,6 +3,8 @@ import { NavLink } from "react-dom";
 
 const NavBar = () => {
   return (
+    // IF I USE NAVLINK HERE DO I HAVE TO DO IT EVERYWHERE ELSE ?
+    // WHAT DO I IMPORT INTO OTHER PAGES TO ACCESS THIS INFORMATION?
     <NavLink>
       <NavLink
         to="/"

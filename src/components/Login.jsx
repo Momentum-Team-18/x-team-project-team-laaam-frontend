@@ -21,7 +21,7 @@ const Login = ({ setToken }) => {
       })
       .then((res) => setToken(res.data.auth_token));
     console.log("hi i'm getting a token");
-    console.log(username, password);
+    
   };
 
   return (

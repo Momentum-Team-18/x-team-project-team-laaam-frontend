@@ -8,7 +8,7 @@ import Card from "./components/Card"
 
 function App() {
   const [token, setToken] = useState("");
-  const [user,setUser]= useState(null)
+
 
   if (!token) {
     return <Login setToken={setToken} />;
@@ -19,11 +19,12 @@ function App() {
   return (
     <BrowserRouter>
     <nav>our nav bar</nav>
+    {/* ERROR SAYING YOU CAN NOT HAVE A ROUTE IN ROUTE?? */}
       <Routes>
-        <Route path="/" element={<CardFeed />}>
+        <Route path="/" element={<CardFeed token={token} />}>
             <Route path="cardfeed/cardID" element={<Card />} />
-            <Route path="login" element={<Login setUser={setUser}></Login>} />
-            <Route path="newcard" element={<NewCard />} />
+            {/* <Route path="login" element={<Login ></Login>} /> */}
+            <Route path="/newcard" element={<NewCard />} />
             <Route path="*" element={<Error />} />
         </Route>
       </Routes>
@@ -33,3 +34,5 @@ function App() {
 }
 
 export default App;
+
+// QUESTION ABOUT PASSING TOKEN WITH ROUTER/ AUTHENTICATION 
