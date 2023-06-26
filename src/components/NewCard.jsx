@@ -21,6 +21,9 @@ const NewCard = ({ token }) => {
   // axios get request for displaying preview of card.
   // create handles for submitting, picking dropdowns
 
+  //headline, date_created
+  //loading screen
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post(

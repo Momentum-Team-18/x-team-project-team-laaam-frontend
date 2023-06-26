@@ -23,3 +23,19 @@ function App() {
 }
 
 export default App;
+
+// NavBar
+// shows no matter if there is a token or not.
+// 2 main roles
+// - Login
+// - Register
+
+// SideBar
+// - Create a card
+// - All cards feed
+// - Your card feed
+// - Friends card feed
+
+// Main Container
+// -Display selected feed from sidebar.
+// -Display create a card interface
