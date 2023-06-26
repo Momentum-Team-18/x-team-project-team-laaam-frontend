@@ -22,3 +22,18 @@ const NavBar = () => {
   );
 };
 export default NavBar;
+
+
+
+
+// <div>
+// <h2>
+//   <Link to="/" className="button">
+//     Card Feed Link
+//   </Link>
+//   <br></br>
+//   <Link to="/test" className="button">
+//     Test
+//   </Link>
+// </h2>
+// </div>

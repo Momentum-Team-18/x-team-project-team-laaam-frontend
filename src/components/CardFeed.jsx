@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import {useNavigate,Link } from "react-router-dom";
 // import {NavBar} from '/components/NavBar'
 
 const CardFeed = ({ token }) => {
@@ -41,20 +41,6 @@ const CardFeed = ({ token }) => {
         <h1>Card Feed!!</h1>
         <div className="container">
           <div>
-<<<<<<< HEAD
-            <Link to="./cardfeed/cardID">
-              {cards.map((card) => (
-                <ul className="card" key={card.id}>
-                  <div className="img">📷</div>
-                  <h1>{card.headline}</h1>
-                  <p>{card.front_text}</p>
-                  <p>{card.back_text}</p>
-                  <p>Created by: {card.sent_by_user}</p>
-                  <p>Sent to: {card.sent_to_user}</p>
-                </ul>
-              ))}
-            </Link>
-=======
             {cards.map((card) => (
               <ul
                 style={{
@@ -73,7 +59,6 @@ const CardFeed = ({ token }) => {
                 <p>Sent to: {card.sent_to_user}</p>
               </ul>
             ))}
->>>>>>> main
           </div>
         </div>
       </div>
