@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
 import NewCard from "./components/NewCard";
+import Register from "./components/Register";
 // import Card from "./components/Card";
 import Test from "./components/Test";
 import useLocalStorageState from 'use-local-storage-state'
@@ -11,7 +13,16 @@ import useLocalStorageState from 'use-local-storage-state'
 
 
 function App() {
-  const [token, setToken] = useLocalStorageState("laaamToken", "");
+  // const [token, setToken] = useState("");
+  const [token, setToken] = useLocalStorageState("reactCardsToken", "");
+
+  const [id, setId] = useState("");
+
+  // if (!token) {
+  //   return <Register setId={setId} />;
+  // } else {
+  //   return <Login setToken={setToken} />;
+  // }
 
   if (!token) {
     return <Login setToken={setToken} />;
@@ -39,3 +50,19 @@ function App() {
 export default App;
 
 // QUESTION ABOUT PASSING TOKEN WITH ROUTER/ AUTHENTICATION
+
+// NavBar
+// shows no matter if there is a token or not.
+// 2 main roles
+// - Login
+// - Register
+
+// SideBar
+// - Create a card
+// - All cards feed
+// - Your card feed
+// - Friends card feed
+
+// Main Container
+// -Display selected feed from sidebar.
+// -Display create a card interface

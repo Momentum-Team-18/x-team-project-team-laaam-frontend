@@ -41,6 +41,7 @@ const CardFeed = ({ token }) => {
         <h1>Card Feed!!</h1>
         <div className="container">
           <div>
+<<<<<<< HEAD
             <Link to="./cardfeed/cardID">
               {cards.map((card) => (
                 <ul className="card" key={card.id}>
@@ -53,6 +54,26 @@ const CardFeed = ({ token }) => {
                 </ul>
               ))}
             </Link>
+=======
+            {cards.map((card) => (
+              <ul
+                style={{
+                  backgroundColor: card.background_color,
+                  borderColor: card.border_color,
+                  color: card.font_color,
+                }}
+                className="card"
+                key={card.id}
+              >
+                <div className="img">📷</div>
+                <h1>{card.headline}</h1>
+                <p>{card.front_text}</p>
+                <p>{card.date_created}</p>
+                <p>Created by: {card.sent_by_user}</p>
+                <p>Sent to: {card.sent_to_user}</p>
+              </ul>
+            ))}
+>>>>>>> main
           </div>
         </div>
       </div>
