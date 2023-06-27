@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 // import {NavBar} from '/components/NavBar'
 
-const CardFeed = ({ token }) => {
+const CardFeed = ({ token, username }) => {
   const [cards, setCards] = useState([]);
   const [id, setID] = useState();
 
@@ -23,9 +23,10 @@ const CardFeed = ({ token }) => {
 
   console.log(cards);
 
+  console.log(username);
+
   return (
     <>
-      {/* <NavBar /> */}
       <div>
         <h2>
           <Link
@@ -40,7 +41,7 @@ const CardFeed = ({ token }) => {
       </div>
 
       <div>
-        <h1>Card Feed!!</h1>
+        <h1>Card Feed!! Welcome {username} </h1>
         <div className="container">
           <div>
             {cards.map((card) => (

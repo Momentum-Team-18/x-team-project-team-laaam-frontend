@@ -1,9 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // to get a token
-// form to make username and password
+// form to login into account
 
 const Login = ({ setUser }) => {
   const [username, setUsername] = useState("");

@@ -1,14 +1,16 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+// to get a token
+// form to make an account
 
 const Registration = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const baseURL = "https://cards-q6a8.onrender.com/";
 
-  const handleRegister = (event) => {
-    event.preventDefault();
+  const handleRegister = (e) => {
+    e.preventDefault();
     axios
       .post(`${baseURL}auth/users/`, {
         username: username,
@@ -24,13 +26,15 @@ const Registration = ({ setUser }) => {
             const token = res.data.auth_token;
             setUser(token, username);
             console.log(res.data);
+            console.log("hi");
           });
       });
   };
 
   return (
     <>
-      <h1>Sign Up</h1>
+      <h1>Welcome to LAAAM Cards</h1>
+      <p>Please pick a username and password</p>
       <div>
         <form onSubmit={handleRegister}>
           <div>
