@@ -42,6 +42,8 @@ const NewCard = ({ token }) => {
       });
   }, [token]);
 
+  // console.log(sentByUser);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -54,7 +56,7 @@ const NewCard = ({ token }) => {
           font_color: textColor,
           border_decor: borderStyle,
           front_text: frontText,
-          back_text: backText,
+          inner_text: backText,
           sent_by_user: [sentByUser],
           sent_to_user: [sentToUser],
         },
