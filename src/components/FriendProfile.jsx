@@ -1,10 +1,5 @@
-
-
 const FriendProfile = () => {
-    return (
+  return <h1>FriendProfile</h1>;
+};
 
-        <h1>FriendProfile</h1>
-        
-    )}
-
-export default FriendProfile
+export default FriendProfile;

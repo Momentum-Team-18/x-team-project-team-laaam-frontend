@@ -2,53 +2,62 @@ import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import NavBar from './components/NavBar'
+import NavBar from "./components/NavBar";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
 import NewCard from "./components/NewCard";
+import NewUser from "./components/NewUser";
+import NavBar from "./components/navbar";
 import UserProfile from "./components/UserProfile";
 import FriendList from "./components/FriendList";
-import FriendProfile from "./components/FriendProfile.jsx";
-// import NavBar from "./components/NavBar";
+import FriendProfile from "./components/FriendProfile";
 
 function App() {
-  // const [token, setToken] = useState("");
   const [token, setToken] = useLocalStorageState("reactCardsToken", "");
+  const [username, setUsername] = useLocalStorageState("cardUserName", "");
 
-  const [id, setId] = useState("");
-
-  // if (!token) {
-  //   return <Register setId={setId} />;
-  // } else {
-  //   return <Login setToken={setToken} />;
-  // }
-
-  if (!token) {
-    return <Login setToken={setToken} />;
-  }
+  const setUser = (token, username) => {
+    setToken(token);
+    setUsername(username);
+  };
 
   console.log(token);
+  console.log(username);
 
   return (
     <>
-      <nav>
-        <NavBar />
-      </nav>
-
-      <Routes>
-        <Route path="/registration" element={<Registration />} />
-        {/* <Route path="login" element={<Login />} /> */}
-        <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/" element={<CardFeed token={token} />} />
-        <Route path="/cardfeed" element={<CardFeed token={token} />} />
-        <Route path="/newcard" element={<NewCard token={token} />} />
-        <Route path="/friendlist" element={FriendList} />
-        <Route path="/friendprofile" element={FriendProfile} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-
-      <footer> footer </footer>
+      {token ? (
+        <>
+          <nav>
+            <NavBar />
+          </nav>
+          <Routes>
+            <Route
+              path="/"
+              element={<CardFeed token={token} username={username} />}
+            />
+            <Route
+              path="/newcard"
+              element={<NewCard token={token} username={username} />}
+            />
+            <Route
+              path="/userprofile"
+              element={<UserProfile token={token} username={username} />}
+            />
+            <Route path="/friendlist" element={FriendList} />
+            <Route path="/friendprofile" element={FriendProfile} />
+            <Route path="/userprofile" element={<UserProfile />} />
+          </Routes>
+        </>
+      ) : (
+        <>
+          <Routes>
+            <Route path="/" element={<NewUser setUser={setUser} />} />
+            <Route path="/login" element={<Login setUser={setUser} />} />
+          </Routes>
+        </>
+      )}
     </>
   );
 }

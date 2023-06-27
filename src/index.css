@@ -48,9 +48,8 @@
   max-width: 500px;
   min-width: 500px;
   justify-content: center;
-  border: 15px black solid; 
+  border: 15px black solid;
   border-radius: 2px;
-  
 }
 
 .form-input {
@@ -66,33 +65,59 @@ button {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-login{
-    padding:30px;
+login {
+  padding: 30px;
 }
 
-.section{
-    border: black 2px solid;
+.section {
+  border: black 2px solid;
 }
 
-.link{
-    color:grey;
+.link {
+  color: grey;
 }
-.active{
-    color:black;
-}
-
-.navbar{
-    display:flex;
-    justify-content: space-between;
-    margin:auto;
-    align-items: center;
-    padding: 10px;
-    border: black 2px solid;
-    
+.active {
+  color: black;
 }
 
-.navbar-icon{
-    font-size: 45px;
-    color: black;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  align-items: center;
+  padding: 10px;
+  border: black 2px solid;
+}
 
+.navbar-icon {
+  font-size: 45px;
+  color: black;
+}
+
+.friend-links-container {
+  border: black solid 1px;
+  margin: 20px;
+  min-width: 450px;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 150px 20px 150px;
+}
+
+.avatar-userprofile {
+  font-size: 100px;
+}
+
+.userCardFeedcontainer {
+  border: black 2px solid;
+  min-width: 450px;
+  min-height: 450px;
+  align-items: center;
+  justify-content: center;
+  padding: 250px;
+}
+
+.following-btn {
+  padding: 10px;
+  border: dotted;
+  margin: 10px;
 }

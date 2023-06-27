@@ -1,10 +1,9 @@
-
 const FriendList = () => {
-    return (
+  return (
+    <h1>FriendList (friends of user)</h1>
+    // User Can not edit
+    // But user could follow from this list?
+  );
+};
 
-        <h1>FriendList (friends of user)</h1>
-        // User Can not edit 
-        // But user could follow from this list? 
-    )}
-
-export default FriendList
+export default FriendList;

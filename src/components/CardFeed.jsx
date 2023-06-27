@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+// import {NavBar} from '/components/NavBar'
 
-
-const CardFeed = ({ token }) => {
+const CardFeed = ({ token, username }) => {
   const [cards, setCards] = useState([]);
+  const [id, setID] = useState();
 
   const baseURL = "https://cards-q6a8.onrender.com/";
 
@@ -19,13 +21,14 @@ const CardFeed = ({ token }) => {
       });
   }, [token]);
 
-  // console.log(cards);
+  console.log(cards);
+
+  console.log(username);
 
   return (
     <>
-     
       <div>
-        <h1>Card Feed!!</h1>
+        <h1>Card Feed!! Welcome {username} </h1>
         <div className="container">
           <div>
             {cards.map((card) => (
@@ -34,6 +37,7 @@ const CardFeed = ({ token }) => {
                   backgroundColor: card.background_color,
                   borderColor: card.border_color,
                   color: card.font_color,
+                  borderStyle: card.border_decor,
                 }}
                 className="card"
                 key={card.id}
@@ -42,7 +46,7 @@ const CardFeed = ({ token }) => {
                 <h1>{card.headline}</h1>
                 <p>{card.front_text}</p>
                 <p>{card.date_created}</p>
-                <p>Created by: {card.sent_by_user}</p>
+                <a href="#">Created by: {card.sent_by_user}</a>
                 <p>Sent to: {card.sent_to_user}</p>
               </ul>
             ))}

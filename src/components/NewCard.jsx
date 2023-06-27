@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { NavLink, Link } from "react-router-dom";
-
 
 // pass token
 // create card, load preview
 
-const NewCard = ({ token }) => {
+const NewCard = ({ token, username }) => {
   const [cardColor, setCardColor] = useState("");
   const [borderColor, setBorderColor] = useState("");
   const [font, setFont] = useState("");
   const [frontText, setFrontText] = useState("");
+  const [backText, setBackText] = useState("");
   const [headline, setHeadline] = useState("");
   const [textColor, setTextColor] = useState("");
+  const [borderStyle, setBorderStyle] = useState("");
+  const [sentToUser, setSentToUser] = useState("");
 
   const baseURL = "https://cards-q6a8.onrender.com/";
 
@@ -23,28 +25,43 @@ const NewCard = ({ token }) => {
   // axios get request for displaying preview of card.
   // create handles for submitting, picking dropdowns
 
-  //headline, date_created
-  //loading screen
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(
-      `${baseURL}api/cards`,
-      {
-        background_color: cardColor,
-        // date_created: "",
-        headline: headline,
-        border_color: borderColor,
-        font_color: textColor,
-      },
-      {
-        headers: {
-          Authorization: `Token ${token}`,
+    axios
+      .post(
+        `${baseURL}api/cards/`,
+        {
+          background_color: cardColor,
+          headline: headline,
+          border_color: borderColor,
+          font_color: textColor,
+          border_decor: borderStyle,
+          front_text: frontText,
+          inner_text: backText,
+          sent_by_user: username,
+          sent_to_user: sentToUser,
         },
-      }.then((res) => {
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
         setCardColor("");
+        setHeadline("");
+        setFont("");
+        setBorderColor("");
+        setTextColor("");
+        setFrontText("");
+        setBackText("");
+        setBorderStyle("");
+        setSentToUser("");
       })
-    );
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleChange = (userInput, e) => {
@@ -63,13 +80,19 @@ const NewCard = ({ token }) => {
     if (userInput === "textColor") {
       setTextColor(e.target.value);
     }
+    if (userInput === "frontText") {
+      setFrontText(e.target.value);
+    }
+    if (userInput === "backText") {
+      setBackText(e.target.value);
+    }
+    if (userInput === "borderStyle") {
+      setBorderStyle(e.target.value);
+    }
+    if (userInput === "sentToUser") {
+      setSentToUser(e.target.value);
+    }
   };
-
-  console.log(cardColor);
-  console.log(font);
-  console.log(headline);
-  console.log(borderColor);
-  console.log(textColor);
 
   return (
     // return a form
@@ -77,11 +100,11 @@ const NewCard = ({ token }) => {
     // Create Card button to submit/update database
 
     <>
-
       <div className="create-card">
         <div>
           <h1>Create a Card</h1>
-          <div className="form-input">
+
+          <div className="form">
             <form className="form" onSubmit={handleSubmit}>
               <label for="color-select">Background Color </label>
               <select
@@ -89,82 +112,135 @@ const NewCard = ({ token }) => {
                 onChange={(e) => handleChange("cardColor", e)}
               >
                 <option value="">--Please choose a color--</option>
-                <option value="Pink">Pink</option>
+                <option value="Red">Red</option>
+                <option value="Blue">Blue</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Purple">Purple</option>
+              </select>
+              <label for="borderColor-select">Border Color</label>
+              <select
+                id="borderColor-select"
+                onChange={(e) => handleChange("borderColor", e)}
+              >
+                <option value="">--Please choose a color--</option>
                 <option value="Blue">Blue</option>
                 <option value="Yellow">Yellow</option>
                 <option value="Green">Green</option>
               </select>
+              <br></br>
+
+              <label for="borderStyle-select">Border Style</label>
+              <select
+                id="borderColor-select"
+                onChange={(e) => handleChange("borderStyle", e)}
+              >
+                <option value="">--Please choose a color--</option>
+                <option value="Dotted">Dotted</option>
+                <option value="Null">No Border</option>
+                <option value="Solid">Solid</option>
+              </select>
+
+              <label for="font-select">Font </label>
+              <select
+                id="font-select"
+                onChange={(e) => handleChange("font", e)}
+              >
+                <option value="">--Please choose a font--</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Arial">Arial</option>
+              </select>
+              <br></br>
+
+              <label for="borderColor-select"> Font Color</label>
+              <select
+                id="textColor-select"
+                onChange={(e) => handleChange("textColor", e)}
+              >
+                <option value="">--Please choose a color--</option>
+                <option value="Blue">Blue</option>
+                <option value="Green">Green</option>
+                <option value="Purple">Purple</option>
+              </select>
+              <br></br>
+              <label for="headline">Headline </label>
+              <input
+                value={headline}
+                type="text"
+                id="headline"
+                placeholder="Please enter a headline for your card."
+                onChange={(e) => handleChange("headline", e)}
+              ></input>
+              <br></br>
+              <label for="front-text">Front Card Text</label>
+              <input
+                value={frontText}
+                type="text"
+                id="front"
+                placeholder="Please enter text for front of card."
+                onChange={(e) => handleChange("frontText", e)}
+              ></input>
+              <br></br>
+              <label for="back-text">Back Card Text</label>
+              <input
+                value={backText}
+                type="text"
+                id="inner"
+                placeholder="Please enter text for back of card."
+                onChange={(e) => handleChange("backText", e)}
+              ></input>
+              <br></br>
+              <label for="card-image">Choose an image!</label>
+              <input
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept="image/png, image/jpeg"
+              ></input>
+              <br></br>
+              <label for="send-to-user">*Send this to: </label>
+              <input
+                value={sentToUser}
+                type="text"
+                id="sendto"
+                placeholder="Please enter username."
+                onChange={(e) => handleChange("sentToUser", e)}
+              ></input>
+              <br></br>
+              <input type="submit"></input>
             </form>
-            <div className="form">
-              <form>
-                <label for="font-select">Font </label>
-                <select
-                  id="font-select"
-                  onChange={(e) => handleChange("font", e)}
-                >
-                  <option value="">--Please choose a font--</option>
-                  <option value="Serif">Serif</option>
-                  <option value="Sans">Sans</option>
-                  <option value="Times New Roman">Times New Roman</option>
-                  <option value="Arial">Arial</option>
-                  <option value="White">White</option>
-                </select>
-                <br></br>
-              </form>
-              <div className="form">
-                <form>
-                  <label for="borderColor-select"> Border</label>
-                  <select
-                    id="borderColor-select"
-                    onChange={(e) => handleChange("borderColor", e)}
-                  >
-                    <option value="">--Please choose a color--</option>
-                    <option value="pink">Pink</option>
-                    <option value="blue">Blue</option>
-                    <option value="yellow">Yellow</option>
-                    <option value="green">Green</option>
-                    <option value="white">White</option>
-                  </select>
-                </form>
-                <form>
-                  <label for="borderColor-select"> Font Color</label>
-                  <select
-                    id="textColor-select"
-                    onChange={(e) => handleChange("textColor", e)}
-                  >
-                    <option value="">--Please choose a color--</option>
-                    <option value="pink">Pink</option>
-                    <option value="blue">Blue</option>
-                    <option value="yellow">Yellow</option>
-                    <option value="green">Green</option>
-                    <option value="white">White</option>
-                  </select>
-                  <br></br>
-                  <label for="headline">Headline </label>
-                  <input
-                    value={headline}
-                    type="text"
-                    placeholder="Please enter a headline for your card."
-                    onChange={(e) => handleChange("headline", e)}
-                  ></input>
-                  <br></br>
-                  <input type="submit"></input>
-                </form>
-              </div>
-            </div>
           </div>
         </div>
-
+      </div>
+      <div className="create-card-preview-container">
         <div
           className="create-card-preview"
-          style={{ backgroundColor: cardColor, borderColor: borderColor }}
+          style={{
+            backgroundColor: cardColor,
+            borderColor: borderColor,
+            borderStyle: borderStyle,
+            fontFamily: font,
+            color: textColor,
+          }}
         >
           <div className="img">📷 {cardColor}</div>
-          <h1 style={{ fontFamily: font, color: textColor }}>{headline}</h1>
-          <p style={{ fontFamily: font, color: textColor }}>
-            Hey what's going on
-          </p>
-          <p style={{ fontFamily: font, color: textColor }}>Created by:</p>
+          <h1>{headline}</h1>
+          <p>{frontText}</p>
+        </div>
+        <br></br>
+        <div
+          className="create-card-preview"
+          style={{
+            backgroundColor: cardColor,
+            borderColor: borderColor,
+            borderStyle: borderStyle,
+            fontFamily: font,
+            color: textColor,
+          }}
+        >
+          <div className="img"></div>
+          <p>{backText}</p>
+          <p>Created by: {username}</p>
+          <p>Sent to: {sentToUser}</p>
         </div>
       </div>
     </>
