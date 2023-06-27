@@ -12,7 +12,7 @@ import FriendList from "./components/FriendList";
 import FriendProfile from "./components/FriendProfile.jsx";
 import { GiSheep } from "react-icons/gi";
 import { RiAddCircleFill } from "react-icons/ri";
-import { PiUserCircleGearFill } from "react-icons/pi";
+import {FaUserCircle} from "react-icons/fa";
 // import NavBar from "./components/NavBar";
 
 
@@ -38,28 +38,7 @@ function App() {
 
   return (
     <>
-    <div>
-      <nav className="navbar">
-        <div className="navbar-container">
-          <Link to="/userprofile">
-            <RiAddCircleFill className="navbar-icon" />
-            UserProfile
-          </Link>
-          <br></br>
-          <Link to="/" onClick="cardFeed">
-            <GiSheep className="navbar-icon" />
-            Card Feed Link
-          </Link>
-          <br></br>
-          <Link to="/newcard" onClick="newCard">
-            <PiUserCircleGearFill className="navbar-icon" />
-            NewCard
-          </Link>
-        </div>
-      </nav>
-      </div>
-  
-      
+    <nav> <NavBar /></nav>  
       <Routes>
         <Route path="/registration" element={<Registration />} />
         {/* <Route path="login" element={<Login />} /> */}

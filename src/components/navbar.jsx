@@ -1,31 +1,36 @@
-import React, { useSate } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {NavLink} from 'react-router-dom';
 import { GiSheep } from "react-icons/gi";
 import { RiAddCircleFill } from "react-icons/ri";
-import { PiUserCircleGearFill } from "react-icons/pi";
+import {FaUserCircle} from "react-icons/fa";
 
 const NavBar = ({ token }) => {
+    const handleClickUserProfile = () => {}
+    const handleClickCardFeed = () => {}
+    const handleClickNewCard= () => {}
+
+
   return (
     <>
+    <div>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/UserProfile" onClick="userProfile">
-            <RiAddCircleFill className="navbar-icon" />
-            UserProfile
+          <Link to="/userprofile" onClick={handleClickUserProfile}>
+           <FaUserCircle className="navbar-icon" />
+            
           </Link>
           <br></br>
-          <Link to="/" onClick="cardFeed">
+          <Link to="/" onClick={handleClickCardFeed}>
             <GiSheep className="navbar-icon" />
-            Card Feed Link
+           
           </Link>
           <br></br>
-          <Link to="/NewCard" onClick="newCard">
-            <PiUserCircleGearFill className="navbar-icon" />
-            NewCard
+          <Link to="/newcard" onClick={handleClickNewCard}>
+            <RiAddCircleFill className="navbar-icon" />
           </Link>
         </div>
       </nav>
+      </div>
     </>
   );
 };
