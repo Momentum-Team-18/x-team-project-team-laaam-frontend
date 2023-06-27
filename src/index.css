@@ -80,3 +80,9 @@ login{
 .active{
     color:black;
 }
+
+.navbar{
+    display:flex;
+    flex: wrap;
+    border: black 2px solid;
+}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {useNavigate,Link } from "react-router-dom";
-// import {NavBar} from '/components/NavBar'
+
 
 const CardFeed = ({ token }) => {
   const [cards, setCards] = useState([]);
@@ -24,19 +23,7 @@ const CardFeed = ({ token }) => {
 
   return (
     <>
-      {/* <NavBar /> */}
-      <div>
-        <h2>
-          <Link to="/newcard" className="button" onClick={() => console.log("CLICK! - NEWCARD")}>
-            Create New Card
-          </Link>
-          <br></br>
-          <Link to="/test" className="button" onClick={() => console.log("CLICK! - TEST")}>
-            Test
-          </Link>
-        </h2>
-      </div>
-
+     
       <div>
         <h1>Card Feed!!</h1>
         <div className="container">

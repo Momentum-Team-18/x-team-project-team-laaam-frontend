@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import {Link} from "react-router-dom"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Registration from "./components/Registration";
 import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
 import NewCard from "./components/NewCard";
-import Register from "./components/Register";
-// import Card from "./components/Card";
-import Test from "./components/Test";
+import UserProfile from "./components/UserProfile";
+import FriendList from "./components/FriendList";
+import FriendProfile from "./components/FriendProfile.jsx";
+import { GiSheep } from "react-icons/gi";
+import { RiAddCircleFill } from "react-icons/ri";
+import { PiUserCircleGearFill } from "react-icons/pi";
+// import NavBar from "./components/NavBar";
 
 
 
@@ -32,17 +38,41 @@ function App() {
 
   return (
     <>
-      <nav>our nav bar</nav>
-      {/* ERROR SAYING YOU CAN NOT HAVE A ROUTE IN ROUTE?? */}
+    <div>
+      <nav className="navbar">
+        <div className="navbar-container">
+          <Link to="/userprofile">
+            <RiAddCircleFill className="navbar-icon" />
+            UserProfile
+          </Link>
+          <br></br>
+          <Link to="/" onClick="cardFeed">
+            <GiSheep className="navbar-icon" />
+            Card Feed Link
+          </Link>
+          <br></br>
+          <Link to="/newcard" onClick="newCard">
+            <PiUserCircleGearFill className="navbar-icon" />
+            NewCard
+          </Link>
+        </div>
+      </nav>
+      </div>
+  
+      
       <Routes>
+        <Route path="/registration" element={<Registration />} />
+        {/* <Route path="login" element={<Login />} /> */}
+        <Route path="/userprofile" element={UserProfile} />
         <Route path="/" element={<CardFeed token={token} />} />
         <Route path="/cardfeed" element={<CardFeed token={token}/>} />
-        {/* <Route path="login" element={<Login ></Login>} /> */}
         <Route path="/newcard" element={<NewCard token={token} />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/friendlist" element={FriendList} />
+        <Route path="/friendprofile" element={FriendProfile} />
         <Route path="*" element={<Error />} />
       </Routes>
-      <footer> our footer </footer>
+
+      <footer> footer </footer>
     </>
   );
 }

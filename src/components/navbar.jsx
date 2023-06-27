@@ -1,39 +1,32 @@
-import React from "react";
-import { NavLink } from "react-dom";
+import React, { useSate } from "react";
+import { Link } from "react-router-dom";
+import {NavLink} from 'react-router-dom';
+import { GiSheep } from "react-icons/gi";
+import { RiAddCircleFill } from "react-icons/ri";
+import { PiUserCircleGearFill } from "react-icons/pi";
 
-const NavBar = () => {
+const NavBar = ({ token }) => {
   return (
-    // IF I USE NAVLINK HERE DO I HAVE TO DO IT EVERYWHERE ELSE ?
-    // WHAT DO I IMPORT INTO OTHER PAGES TO ACCESS THIS INFORMATION?
-    <NavLink>
-      <NavLink
-        to="/"
-        className={({ isActive }) => (isActive ? "link active" : "link")}
-      >
-        Card Feed
-      </NavLink>
-      <NavLink
-        to="/newcard"
-        className={({ isActive }) => (isActive ? "link active" : "link")}
-      >
-        New Card
-      </NavLink>
-    </NavLink>
+    <>
+      <nav className="navbar">
+        <div className="navbar-container">
+          <Link to="/UserProfile" onClick="userProfile">
+            <RiAddCircleFill className="navbar-icon" />
+            UserProfile
+          </Link>
+          <br></br>
+          <Link to="/" onClick="cardFeed">
+            <GiSheep className="navbar-icon" />
+            Card Feed Link
+          </Link>
+          <br></br>
+          <Link to="/NewCard" onClick="newCard">
+            <PiUserCircleGearFill className="navbar-icon" />
+            NewCard
+          </Link>
+        </div>
+      </nav>
+    </>
   );
 };
 export default NavBar;
-
-
-
-
-// <div>
-// <h2>
-//   <Link to="/" className="button">
-//     Card Feed Link
-//   </Link>
-//   <br></br>
-//   <Link to="/test" className="button">
-//     Test
-//   </Link>
-// </h2>
-// </div>
