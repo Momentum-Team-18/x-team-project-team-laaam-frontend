@@ -33,7 +33,6 @@ function App() {
   return (
     <>
       <nav>
-        {" "}
         <NavBar />
       </nav>
 

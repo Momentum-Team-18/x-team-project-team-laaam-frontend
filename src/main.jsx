@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import NavBar from "./components/navbar.jsx";
+
 
 // const AppLayout= () => {
 //     return(
@@ -15,7 +15,6 @@ import NavBar from "./components/navbar.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <NavBar />
     <BrowserRouter>
       <App />
     </BrowserRouter>
