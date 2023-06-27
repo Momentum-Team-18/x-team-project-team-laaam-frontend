@@ -28,19 +28,6 @@ const CardFeed = ({ token, username }) => {
   return (
     <>
       <div>
-        <h2>
-          <Link
-            to="/newcard"
-            className="button"
-            onClick={() => console.log("CLICK! - NEWCARD")}
-          >
-            Create New Card
-          </Link>
-          <br></br>
-        </h2>
-      </div>
-
-      <div>
         <h1>Card Feed!! Welcome {username} </h1>
         <div className="container">
           <div>

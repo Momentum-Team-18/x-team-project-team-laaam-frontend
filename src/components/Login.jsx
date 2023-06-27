@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useNavigate } from "react";
 import axios from "axios";
 
 // to get a token
@@ -8,6 +8,7 @@ const Login = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const baseURL = "https://cards-q6a8.onrender.com/";
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ const Login = ({ setUser }) => {
       .then((res) => {
         const token = res.data.auth_token;
         setUser(token, username);
+        navigate("/");
       });
   };
 

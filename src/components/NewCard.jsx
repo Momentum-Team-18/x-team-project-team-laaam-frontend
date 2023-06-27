@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { NavLink, Link } from "react-router-dom";
 
@@ -100,16 +100,6 @@ const NewCard = ({ token, username }) => {
     // Create Card button to submit/update database
 
     <>
-      <div>
-        <h2>
-          <Link to="/" className="button">
-            Card Feed
-          </Link>
-          <br></br>
-        </h2>
-      </div>
-      {/* < NavBar /> */}
-
       <div className="create-card">
         <div>
           <h1>Create a Card</h1>
