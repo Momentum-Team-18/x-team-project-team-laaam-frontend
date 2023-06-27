@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // to get a token
 // form to make username and password
@@ -7,10 +8,12 @@ import axios from "axios";
 const Register = ({ setId }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const baseURL = "https://cards-q6a8.onrender.com/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError(null);
     axios
       .post(`${baseURL}auth/users/`, {
         username: username.toLowerCase(),
@@ -18,6 +21,9 @@ const Register = ({ setId }) => {
       })
       .then((res) => {
         setId(username, password);
+      })
+      .catch((error) => {
+        setError(error.message);
       });
   };
 
@@ -33,7 +39,6 @@ const Register = ({ setId }) => {
             name="name"
             id="name"
             value={username}
-            // as the value in input changes, it's setting the value to setUserName
             onChange={(e) => setUsername(e.target.value)}
             required
           />

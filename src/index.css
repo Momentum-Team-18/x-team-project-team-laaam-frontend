@@ -44,13 +44,25 @@
   flex-direction: column;
 }
 
+.create-card-preview-container {
+  border: 2px black solid;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
 .create-card-preview {
   max-width: 500px;
   min-width: 500px;
   justify-content: center;
-  border: 15px black solid; 
+  border: 15px black solid;
   border-radius: 2px;
-  
+  display: flex;
+  flex-direction: column;
 }
 
 .form-input {
@@ -66,17 +78,17 @@ button {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-login{
-    padding:30px;
+login {
+  padding: 30px;
 }
 
-.section{
-    border: black 2px solid;
+.section {
+  border: black 2px solid;
 }
 
-.link{
-    color:grey;
+.link {
+  color: grey;
 }
-.active{
-    color:black;
+.active {
+  color: black;
 }

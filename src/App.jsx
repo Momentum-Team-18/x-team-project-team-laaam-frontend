@@ -6,22 +6,15 @@ import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
 import NewCard from "./components/NewCard";
 import Register from "./components/Register";
-// import Card from "./components/Card";
-import Test from "./components/Test";
-
-
-
 
 function App() {
-  // const [token, setToken] = useState("");
   const [token, setToken] = useLocalStorageState("reactCardsToken", "");
-
   const [id, setId] = useState("");
 
   // if (!token) {
   //   return <Register setId={setId} />;
   // } else {
-  //   return <Login setToken={setToken} />;
+  //   <Login setToken={setToken} />;
   // }
 
   if (!token) {
@@ -33,14 +26,11 @@ function App() {
   return (
     <>
       <nav>our nav bar</nav>
-      {/* ERROR SAYING YOU CAN NOT HAVE A ROUTE IN ROUTE?? */}
       <Routes>
         <Route path="/" element={<CardFeed token={token} />} />
-        <Route path="/cardfeed" element={<CardFeed token={token}/>} />
-        {/* <Route path="login" element={<Login ></Login>} /> */}
+        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/cardfeed" element={<CardFeed token={token} />} />
         <Route path="/newcard" element={<NewCard token={token} />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="*" element={<Error />} />
       </Routes>
       <footer> our footer </footer>
     </>
