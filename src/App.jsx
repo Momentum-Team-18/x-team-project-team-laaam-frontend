@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar'
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
@@ -11,9 +11,6 @@ import UserProfile from "./components/UserProfile";
 import FriendList from "./components/FriendList";
 import FriendProfile from "./components/FriendProfile.jsx";
 // import NavBar from "./components/NavBar";
-
-
-
 
 function App() {
   // const [token, setToken] = useState("");
@@ -35,14 +32,17 @@ function App() {
 
   return (
     <>
-    <nav> <NavBar /></nav>  
+      <nav>
+        {" "}
+        <NavBar />
+      </nav>
 
       <Routes>
         <Route path="/registration" element={<Registration />} />
         {/* <Route path="login" element={<Login />} /> */}
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/" element={<CardFeed token={token} />} />
-        <Route path="/cardfeed" element={<CardFeed token={token}/>} />
+        <Route path="/cardfeed" element={<CardFeed token={token} />} />
         <Route path="/newcard" element={<NewCard token={token} />} />
         <Route path="/friendlist" element={FriendList} />
         <Route path="/friendprofile" element={FriendProfile} />
