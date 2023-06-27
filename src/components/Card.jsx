@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-dom";
-import CardFeed from "./CardFeed";
+
 
 const Card = (card) => {
   const { cardId } = useParams();

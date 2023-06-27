@@ -80,3 +80,19 @@ login{
 .active{
     color:black;
 }
+
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    margin:auto;
+    align-items: center;
+    padding: 10px;
+    border: black 2px solid;
+    
+}
+
+.navbar-icon{
+    font-size: 45px;
+    color: black;
+
+}

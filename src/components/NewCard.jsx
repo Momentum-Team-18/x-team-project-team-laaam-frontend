@@ -77,18 +77,6 @@ const NewCard = ({ token }) => {
     // Create Card button to submit/update database
 
     <>
-      <div>
-        <h2>
-          <Link to="/" className="button">
-            Card Feed Link
-          </Link>
-          <br></br>
-          <Link to="/test" className="button">
-            Test
-          </Link>
-        </h2>
-      </div>
-      {/* < NavBar /> */}
 
       <div className="create-card">
         <div>

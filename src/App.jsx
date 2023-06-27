@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import NavBar from './components/NavBar'
+import Registration from "./components/Registration";
 import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
 import NewCard from "./components/NewCard";
-import Register from "./components/Register";
-// import Card from "./components/Card";
-import Test from "./components/Test";
-
-
-
+import UserProfile from "./components/UserProfile";
+import FriendList from "./components/FriendList";
+import FriendProfile from "./components/FriendProfile.jsx";
+// import NavBar from "./components/NavBar";
 
 function App() {
   // const [token, setToken] = useState("");
@@ -32,17 +32,23 @@ function App() {
 
   return (
     <>
-      <nav>our nav bar</nav>
-      {/* ERROR SAYING YOU CAN NOT HAVE A ROUTE IN ROUTE?? */}
+      <nav>
+        <NavBar />
+      </nav>
+
       <Routes>
+        <Route path="/registration" element={<Registration />} />
+        {/* <Route path="login" element={<Login />} /> */}
+        <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/" element={<CardFeed token={token} />} />
-        <Route path="/cardfeed" element={<CardFeed token={token}/>} />
-        {/* <Route path="login" element={<Login ></Login>} /> */}
+        <Route path="/cardfeed" element={<CardFeed token={token} />} />
         <Route path="/newcard" element={<NewCard token={token} />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/friendlist" element={FriendList} />
+        <Route path="/friendprofile" element={FriendProfile} />
         <Route path="*" element={<Error />} />
       </Routes>
-      <footer> our footer </footer>
+
+      <footer> footer </footer>
     </>
   );
 }
