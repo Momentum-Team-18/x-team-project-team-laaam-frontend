@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 const CardFeed = ({ token }) => {
   const [cards, setCards] = useState([]);
+  const [id, setID] = useState();
 
   const baseURL = "https://cards-q6a8.onrender.com/";
 
@@ -57,7 +58,7 @@ const CardFeed = ({ token }) => {
                 <h1>{card.headline}</h1>
                 <p>{card.front_text}</p>
                 <p>{card.date_created}</p>
-                <p>Created by: {card.sent_by_user}</p>
+                <a href="#">Created by: {card.sent_by_user}</a>
                 <p>Sent to: {card.sent_to_user}</p>
               </ul>
             ))}
