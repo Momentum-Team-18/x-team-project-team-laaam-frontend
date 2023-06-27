@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
-import {Link} from "react-router-dom"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import NavBar from './components/NavBar'
 import Registration from "./components/Registration";
@@ -11,9 +10,6 @@ import NewCard from "./components/NewCard";
 import UserProfile from "./components/UserProfile";
 import FriendList from "./components/FriendList";
 import FriendProfile from "./components/FriendProfile.jsx";
-import { GiSheep } from "react-icons/gi";
-import { RiAddCircleFill } from "react-icons/ri";
-import {FaUserCircle} from "react-icons/fa";
 // import NavBar from "./components/NavBar";
 
 
