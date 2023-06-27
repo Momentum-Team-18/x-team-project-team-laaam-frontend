@@ -6,33 +6,28 @@ import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
 import NewCard from "./components/NewCard";
 import Register from "./components/Register";
+import NewUser from "./components/NewUser";
 
 function App() {
   const [token, setToken] = useLocalStorageState("reactCardsToken", "");
-  const [id, setId] = useState("");
+  const [username, setUsername] = useLocalStorageState("cardUserName", "");
 
-  // if (!token) {
-  //   return <Register setId={setId} />;
-  // } else {
-  //   <Login setToken={setToken} />;
-  // }
-
-  if (!token) {
-    return <Login setToken={setToken} />;
-  }
+  const setUser = (token, username) => {
+    setToken(token);
+    setUsername(username);
+  };
 
   console.log(token);
 
   return (
     <>
-      <nav>our nav bar</nav>
       <Routes>
         <Route path="/" element={<CardFeed token={token} />} />
-        <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/cardfeed" element={<CardFeed token={token} />} />
+        <Route path="/register" element={<NewUser setUser={setUser} />} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/newcard" element={<NewCard token={token} />} />
       </Routes>
-      <footer> our footer </footer>
     </>
   );
 }

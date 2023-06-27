@@ -39,13 +39,8 @@ const NewCard = ({ token }) => {
       .then((res) => {
         setSentByUser(res.data.sent_by_user);
         setSentToUser(res.data.sent_to_user);
-        console.log(`${sentByUser}`);
-        console.log(`${sentToUser}`);
       });
   }, [token]);
-
-  // console.log(`${sentByUser}`);
-  // console.log(`${sentToUser}`);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,8 +55,8 @@ const NewCard = ({ token }) => {
           border_decor: borderStyle,
           front_text: frontText,
           back_text: backText,
-          sent_by_user: { sentByUser },
-          sent_to_user: { sentToUser },
+          sent_by_user: [sentByUser],
+          sent_to_user: [sentToUser],
         },
         {
           headers: {
@@ -146,10 +141,10 @@ const NewCard = ({ token }) => {
                 onChange={(e) => handleChange("cardColor", e)}
               >
                 <option value="">--Please choose a color--</option>
-                <option value="Pink">Pink</option>
+                <option value="Red">Red</option>
                 <option value="Blue">Blue</option>
                 <option value="Yellow">Yellow</option>
-                <option value="Green">Green</option>
+                <option value="Purple">Purple</option>
               </select>
 
               {/* <label for="user-select">Profile </label>
@@ -190,7 +185,7 @@ const NewCard = ({ token }) => {
               >
                 <option value="">--Please choose a color--</option>
                 <option value="dotted">Dotted</option>
-                <option value="dashed">Dashed</option>
+                <option value="none">No Border</option>
                 <option value="solid">Solid</option>
               </select>
 
