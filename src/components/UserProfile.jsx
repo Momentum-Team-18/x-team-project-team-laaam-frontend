@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -28,3 +29,4 @@ const UserProfile = ({ token, username }) => {
 };
 
 export default UserProfile;
+

@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import NavBar from './components/NavBar'
+import Registration from "./components/Registration";
 import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
 import NewCard from "./components/NewCard";
+
 import NewUser from "./components/NewUser";
 import NavBar from "./components/navbar";
 import UserProfile from "./components/UserProfile";
 import FriendList from "./components/FriendList";
 import FriendProfile from "./components/FriendProfile";
+
 
 function App() {
   const [token, setToken] = useLocalStorageState("reactCardsToken", "");

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
-// import {NavBar} from '/components/NavBar'
+
 
 const CardFeed = ({ token, username }) => {
   const [cards, setCards] = useState([]);

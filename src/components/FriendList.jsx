@@ -1,3 +1,4 @@
+
 const FriendList = () => {
   return (
     <h1>FriendList (friends of user)</h1>
@@ -7,3 +8,4 @@ const FriendList = () => {
 };
 
 export default FriendList;
+

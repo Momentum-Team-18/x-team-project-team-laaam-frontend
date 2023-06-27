@@ -1,4 +1,5 @@
 const UserFriends = () => {
+
   return (
     <h1>FriendList (friends of user)</h1>
     // Can delete friends from this list
@@ -7,3 +8,4 @@ const UserFriends = () => {
 };
 
 export default UserFriends;
+
