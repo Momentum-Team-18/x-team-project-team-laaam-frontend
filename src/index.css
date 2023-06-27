@@ -84,20 +84,15 @@ login{
 .navbar{
     display:flex;
     justify-content: space-between;
+    margin:auto;
     align-items: center;
     padding: 10px;
     border: black 2px solid;
-
     
-}
-.navbar-container{
-    display:flex;
-    align-items: center;
-    padding:15px;
 }
 
 .navbar-icon{
     font-size: 45px;
     color: black;
-    margin-right:450px;
+
 }

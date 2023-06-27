@@ -3,6 +3,7 @@ import useLocalStorageState from "use-local-storage-state";
 import {Link} from "react-router-dom"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import NavBar from './components/NavBar'
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
@@ -39,10 +40,11 @@ function App() {
   return (
     <>
     <nav> <NavBar /></nav>  
+
       <Routes>
         <Route path="/registration" element={<Registration />} />
         {/* <Route path="login" element={<Login />} /> */}
-        <Route path="/userprofile" element={UserProfile} />
+        <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/" element={<CardFeed token={token} />} />
         <Route path="/cardfeed" element={<CardFeed token={token}/>} />
         <Route path="/newcard" element={<NewCard token={token} />} />
