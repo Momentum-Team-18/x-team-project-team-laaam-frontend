@@ -12,6 +12,7 @@
   margin: 10px;
   background-color: rgb(255, 255, 255);
   justify-content: center;
+  flex-wrap: wrap;
 }
 .card {
   border: 2px black solid;
