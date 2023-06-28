@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import navbar from "./components/navbar";
+import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import CardFeed from "./components/CardFeed";
 import NewCard from "./components/NewCard";
