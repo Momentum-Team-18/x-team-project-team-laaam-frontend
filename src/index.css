@@ -108,7 +108,11 @@ login {
 }
 
 .userCardFeedcontainer {
+    
   border: black 2px solid;
+  display:flex;
+  flex-direction: column;
+  width:auto;
   min-width: 450px;
   min-height: 450px;
   align-items: center;
@@ -116,8 +120,22 @@ login {
   padding: 250px;
 }
 
-.following-btn {
+.follow-unfollow-btn {
   padding: 10px;
   border: dotted;
   margin: 10px;
+}
+
+.followers{
+    border: black solid 1px;
+    
+}
+.follow-card{
+    border: black solid 1px;
+    max-width: 300;
+    margin: 10px;
+    padding: 10px;
+}
+.avatar-userprofile-follow{
+    font-size: 40px;
 }

@@ -73,13 +73,13 @@ const UserProfile = ({ token, username }) => {
       <div>
         <h1> {username}</h1>
         <FaUserCircle className="avatar-userprofile" />
-        <br></br>
+        {/* <h3>Bio:{bio}</h3> */}
         <br></br>
         <button> FOLLOW </button>
         <br></br>
       </div>
       <div className="friend-links-container">
-        <button className="following-btn">PEROPLE USER FOLLOW</button>
+        <button className="following-btn">PEOPLE USER FOLLOW</button>
         <button className="following-btn">PEOPLE WHO FOLLOW USER</button>
       </div>
       <div className="userCardFeedcontainer">
@@ -102,8 +102,6 @@ const UserProfile = ({ token, username }) => {
             <p>Sent to: {card.sent_to_user}</p>
           </ul>
         ))}
-
-        <h1>hi</h1>
       </div>
     </>
   );
