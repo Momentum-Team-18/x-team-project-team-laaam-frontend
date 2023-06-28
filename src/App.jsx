@@ -30,9 +30,8 @@ function App() {
     <>
       {token ? (
         <>
-          <nav>
-            <NavBar />
-          </nav>
+          <NavBar />
+
           <Routes>
             <Route
               path="/"
