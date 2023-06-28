@@ -45,7 +45,7 @@ const CardFeed = ({ token, username }) => {
       <div>
         <h1>Card Feed!! Welcome {username} </h1>
         <div className="container">
-          <div>
+          <div className="container">
             {cards.map((card) => (
               <ul
                 style={{
