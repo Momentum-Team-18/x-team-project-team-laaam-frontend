@@ -10,6 +10,8 @@ import NewUser from "./components/NewUser";
 import UserProfile from "./components/UserProfile";
 import FriendList from "./components/FriendList";
 import FriendProfile from "./components/FriendProfile";
+import CardEdit from "./components/CardEdit";
+import Followers from "./components/Followers";
 
 function App() {
   const [token, setToken] = useLocalStorageState("reactCardsToken", "");
@@ -41,11 +43,16 @@ function App() {
             />
             <Route
               path="/userprofile"
+              
               element={<UserProfile token={token} username={username} />}
             />
+            <Route path="/followers" element={<Followers token={token}/>} />
             <Route path="/friendlist" element={FriendList} />
             <Route path="/friendprofile" element={FriendProfile} />
-            <Route path="/userprofile" element={<UserProfile />} />
+            <Route path="/userprofile" element={<UserProfile token={token} username={username}/>}
+            />
+            <Route path="/cardedit" element={<CardEdit token={token} username={username} />}
+            />
           </Routes>
         </>
       ) : (
