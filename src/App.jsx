@@ -12,6 +12,7 @@ import FriendList from "./components/FriendList";
 import FriendProfile from "./components/FriendProfile";
 import CardEdit from "./components/CardEdit";
 import Followers from "./components/Followers";
+import DeleteCard from "./components/DeleteCard";
 
 function App() {
   const [token, setToken] = useLocalStorageState("reactCardsToken", "");
@@ -29,9 +30,8 @@ function App() {
     <>
       {token ? (
         <>
-          <nav>
-            <NavBar />
-          </nav>
+          <NavBar />
+
           <Routes>
             <Route
               path="/"
@@ -43,15 +43,22 @@ function App() {
             />
             <Route
               path="/userprofile"
-              
               element={<UserProfile token={token} username={username} />}
             />
-            <Route path="/followers" element={<Followers token={token}/>} />
-            <Route path="/friendlist" element={<FriendList token={token}/>} />
+            <Route path="/followers" element={<Followers token={token} />} />
+            <Route path="/friendlist" element={<FriendList token={token} />} />
             <Route path="/friendprofile" element={FriendProfile} />
-            <Route path="/userprofile" element={<UserProfile token={token} username={username}/>}
+            <Route
+              path="/userprofile"
+              element={<UserProfile token={token} username={username} />}
             />
-            <Route path="/cardedit" element={<CardEdit token={token} username={username} />}
+            <Route
+              path="/edit/:cardId"
+              element={<CardEdit token={token} username={username} />}
+            />
+            <Route
+              path="/delete/:cardId"
+              element={<DeleteCard token={token} username={username} />}
             />
           </Routes>
         </>
