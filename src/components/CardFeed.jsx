@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CardFeed = ({ token, username }) => {
   const [cards, setCards] = useState([]);
-  const [id, setID] = useState();
+  const [profileName, setProfileName] = useState();
 
   const baseURL = "https://cards-q6a8.onrender.com/";
-
+ 
   useEffect(() => {
     axios
       .get(`${baseURL}api/cards`, {
@@ -23,6 +23,12 @@ const CardFeed = ({ token, username }) => {
   console.log(cards);
 
   console.log(username);
+
+  const handleUserName = (id) => {
+    setProfileName(id)
+    console.log('hi getting username')
+  }
+  console.log(profileName)
 
   return (
     <>
@@ -45,7 +51,7 @@ const CardFeed = ({ token, username }) => {
                 <h1>{card.headline}</h1>
                 <p>{card.front_text}</p>
                 <p>{card.date_created}</p>
-                <a href="#">Created by: {card.sent_by_user}</a>
+                <button onClick={() => handleUserName(card.sent_by_user)}>Created by: {card.sent_by_user}</button>
                 <p>Sent to: {card.sent_to_user}</p>
               </ul>
             ))}
