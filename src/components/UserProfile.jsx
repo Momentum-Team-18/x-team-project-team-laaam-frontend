@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 
+// GET REQUEST - USER INFO  - USER end point 
+// USER CARD FEED 
+// DELETE CARD FROM ARRAY 
+// 
+
+
+
+
+
+
 const UserProfile = ({ token, username }) => {
   console.log(token);
   console.log(username);
