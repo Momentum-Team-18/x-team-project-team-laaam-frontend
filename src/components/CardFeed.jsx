@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CardFeed = ({ token, username }) => {
   const [cards, setCards] = useState([]);
   const [profileName, setProfileName] = useState();
+  const navigate = useNavigate();
 
   const baseURL = "https://cards-q6a8.onrender.com/";
- 
+
   useEffect(() => {
     axios
       .get(`${baseURL}api/cards`, {
@@ -25,10 +27,13 @@ const CardFeed = ({ token, username }) => {
   console.log(username);
 
   const handleUserName = (id) => {
-    setProfileName(id)
-    console.log('hi getting username')
-  }
-  console.log(profileName)
+    setProfileName(id);
+    console.log("hi getting username");
+  };
+
+  const handleEdit = (cardId) => {
+    navigate(`/edit/${cardId}`);
+  };
 
   return (
     <>
@@ -48,10 +53,20 @@ const CardFeed = ({ token, username }) => {
                 key={card.id}
               >
                 <div className="img">📷</div>
+                {card.sent_by_user === username ? (
+                  <>
+                    <button onClick={() => handleEdit(card.id)}>Edit</button>
+                    <button>Delete</button>
+                  </>
+                ) : (
+                  ""
+                )}
                 <h1>{card.headline}</h1>
                 <p>{card.front_text}</p>
                 <p>{card.date_created}</p>
-                <button onClick={() => handleUserName(card.sent_by_user)}>Created by: {card.sent_by_user}</button>
+                <button onClick={() => handleUserName(card.sent_by_user)}>
+                  Created by: {card.sent_by_user}
+                </button>
                 <p>Sent to: {card.sent_to_user}</p>
               </ul>
             ))}
@@ -63,3 +78,10 @@ const CardFeed = ({ token, username }) => {
 };
 
 export default CardFeed;
+
+{
+  /* <Link to="/cardedit">Edit Card</Link> */
+}
+
+// conditionals inside of card displaying the edit and delete buttons only appear if
+// card.sent_by_user === username

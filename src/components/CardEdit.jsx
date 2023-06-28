@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const CardEdit = () => {
+const CardEdit = ({ token, username }) => {
+  const { cardId } = useParams();
+
+  console.log(cardId);
+
   return (
     <section className="section">
       <h2>Edit</h2>
-
-      <Link to="/cardedit">Edit Card</Link>
     </section>
   );
 };
