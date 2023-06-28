@@ -12,6 +12,7 @@ import FriendList from "./components/FriendList";
 import FriendProfile from "./components/FriendProfile";
 import CardEdit from "./components/CardEdit";
 import Followers from "./components/Followers";
+import DeleteCard from "./components/DeleteCard";
 
 function App() {
   const [token, setToken] = useLocalStorageState("reactCardsToken", "");
@@ -55,6 +56,10 @@ function App() {
             <Route
               path="/edit/:cardId"
               element={<CardEdit token={token} username={username} />}
+            />
+            <Route
+              path="/delete/:cardId"
+              element={<DeleteCard token={token} username={username} />}
             />
           </Routes>
         </>

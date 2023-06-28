@@ -35,6 +35,11 @@ const CardFeed = ({ token, username }) => {
     navigate(`/edit/${cardId}`);
   };
 
+  const handleDelete = (cardId) => {
+    navigate(`/delete/${cardId}`);
+    console.log(cardId);
+  };
+
   return (
     <>
       <div>
@@ -56,7 +61,9 @@ const CardFeed = ({ token, username }) => {
                 {card.sent_by_user === username ? (
                   <>
                     <button onClick={() => handleEdit(card.id)}>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={() => handleDelete(card.id)}>
+                      Delete
+                    </button>
                   </>
                 ) : (
                   ""
