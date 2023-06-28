@@ -33,8 +33,6 @@ const DeleteCard = ({ token, username }) => {
         <button onClick={() => handleDelete()}>
           Are you sure you want to delete this?
         </button>
-        <p>{card.headline}</p>
-        <p>Created by: {username}</p>
       </div>
     </>
   );
