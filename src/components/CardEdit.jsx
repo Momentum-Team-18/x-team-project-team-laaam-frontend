@@ -12,7 +12,6 @@ const CardEdit = ({ token, username }) => {
   const [textColor, setTextColor] = useState("");
   const [borderStyle, setBorderStyle] = useState("");
   const [sentToUser, setSentToUser] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
 
   console.log(cardId);
