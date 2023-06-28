@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Followers from "./Followers";
+import FriendList from "./FriendList";
 
 // GET REQUEST - USER INFO  - USER end point
 // USER CARD FEED
@@ -18,6 +21,7 @@ const UserProfile = ({ token, username }) => {
   const [profileInfo, setProfileInfo] = useState([]);
   const [userCards, setUserCards] = useState([]);
   const baseURL = "https://cards-q6a8.onrender.com/";
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios
@@ -47,9 +51,20 @@ const UserProfile = ({ token, username }) => {
 
   // }]
 
+
+
   console.log(token);
   console.log(username);
   console.log(profileInfo);
+
+  const handleClickFollowers = () => {
+    navigate("/followers")
+    console.log(handleClickFollowers)
+  };
+  const handleClickFriendList =()=> {
+    navigate("/friendlist")
+  }
+
   return (
     <>
       <div>
@@ -61,8 +76,8 @@ const UserProfile = ({ token, username }) => {
         <br></br>
       </div>
       <div className="friend-links-container">
-        <button className="following-btn">PEOPLE USER FOLLOW</button>
-        <button className="following-btn">PEOPLE WHO FOLLOW USER</button>
+        <button onClick={()=>handleClickFriendList()} className="following-btn">PEOPLE USER FOLLOW</button>
+        <button onClick={()=> handleClickFollowers()} className="following-btn">PEOPLE WHO FOLLOW USER</button>
       </div>
       <div className="userCardFeedcontainer">
         {userCards.map((card) => (
