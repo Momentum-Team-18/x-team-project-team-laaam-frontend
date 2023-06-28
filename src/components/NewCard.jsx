@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // pass token
 // create card, load preview
@@ -15,6 +15,8 @@ const NewCard = ({ token, username }) => {
   const [textColor, setTextColor] = useState("");
   const [borderStyle, setBorderStyle] = useState("");
   const [sentToUser, setSentToUser] = useState("");
+
+  const navigate = useNavigate();
 
   const baseURL = "https://cards-q6a8.onrender.com/";
 
@@ -49,7 +51,7 @@ const NewCard = ({ token, username }) => {
       )
       .then((res) => {
         console.log(res.data);
-        setCardColor("");
+        setCardColor(null);
         setHeadline("");
         setFont("");
         setBorderColor("");
@@ -58,6 +60,7 @@ const NewCard = ({ token, username }) => {
         setBackText("");
         setBorderStyle("");
         setSentToUser("");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);

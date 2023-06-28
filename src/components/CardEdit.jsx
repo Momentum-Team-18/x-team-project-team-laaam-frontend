@@ -11,6 +11,7 @@ const CardEdit = ({ token, username }) => {
   const [backText, setBackText] = useState("");
   const [textColor, setTextColor] = useState("");
   const [borderStyle, setBorderStyle] = useState("");
+  const [sentByUser, setSentByUser] = useState("");
   const [sentToUser, setSentToUser] = useState("");
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ const CardEdit = ({ token, username }) => {
         setFrontText(res.data.front_text);
         setBackText(res.data.inner_text);
         setBorderStyle(res.data.border_decor);
-        setSentToUser(username);
+        setSentByUser(username);
       });
   }, [token]);
 
@@ -69,7 +70,8 @@ const CardEdit = ({ token, username }) => {
         setFrontText("");
         setBackText("");
         setBorderStyle("");
-        setSentToUser(username);
+        setSentToUser("");
+        setSentByUser(username);
         navigate("/");
       })
       .catch((error) => {
