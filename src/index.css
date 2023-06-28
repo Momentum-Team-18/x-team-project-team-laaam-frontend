@@ -100,6 +100,7 @@ login {
   align-items: center;
   padding: 10px;
   border: black 2px solid;
+  border-radius: 30px;
 }
 
 .navbar-icon {
@@ -149,4 +150,42 @@ login {
 }
 .avatar-userprofile-follow {
   font-size: 40px;
+}
+
+/* /////////////////////////////////////////// */
+
+.card {
+  width: 252px;
+  height: 265px;
+  background: white;
+  border-radius: 30px;
+  /* box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff; */
+  transition: 0.2s ease-in-out;
+}
+
+.img {
+  display: flex;
+  border: 2px black solid;
+  min-width: 100px;
+  min-height: 275px;
+  justify-content: center;
+  margin: 10px;
+}
+
+.text {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+}
+
+.save .svg {
+  transition: 0.2s ease-in-out;
+  width: 15px;
+  height: 15px;
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }

@@ -40,7 +40,7 @@ const CardFeed = ({ token, username }) => {
   return (
     <>
       <div>
-        <h1>Card Feed!! Welcome {username}</h1>
+        <h1> Welcome {username}! Enjoy your time using Laaam Cards! </h1>
         <div className="container">
           {cards.map((card) => (
             <ReactCardFlip
@@ -67,6 +67,7 @@ const CardFeed = ({ token, username }) => {
                     </button>
                   </>
                 )}
+
                 <h1>{card.headline}</h1>
                 <p>{card.front_text}</p>
                 <p>Created by: {card.sent_by_user}</p>

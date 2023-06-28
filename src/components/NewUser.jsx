@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import Login from "./Login";
 
 // to get a token
 // form to make an account
@@ -45,6 +46,7 @@ const Registration = ({ setUser }) => {
               type="text"
               name="username"
               id="username"
+              placeholder="pick a username."
               value={username}
               required
               onChange={(e) => setUsername(e.target.value)}
@@ -58,18 +60,20 @@ const Registration = ({ setUser }) => {
               type="password"
               name="password"
               id="password"
+              placeholder="pick a password."
               value={password}
               required
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </div>
           <div>
-            <p>--Make a decent password--</p>
-          </div>
-          <div>
             <button type="submit">Submit!</button>
           </div>
         </form>
+        <div>
+          <p>Have an account? Sign in Below.</p>
+          <Login setUser={setUser} />
+        </div>
       </div>
     </>
   );

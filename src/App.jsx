@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { Routes, Route } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
@@ -26,12 +27,29 @@ function App() {
   console.log(token);
   console.log(username);
 
+  const handleLogout = () => {
+    axios
+      .post(
+        "https://cards-q6a8.onrender.com/auth/token/logout/",
+        {},
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        setUser("", null);
+        navigate("/");
+      });
+  };
+
   return (
     <>
+      <NavBar />
+
       {token ? (
         <>
-          <NavBar />
-
           <Routes>
             <Route
               path="/"
@@ -61,6 +79,9 @@ function App() {
               element={<DeleteCard token={token} username={username} />}
             />
           </Routes>
+          <footer>
+            <button onClick={handleLogout}>Log Out</button>
+          </footer>
         </>
       ) : (
         <>
