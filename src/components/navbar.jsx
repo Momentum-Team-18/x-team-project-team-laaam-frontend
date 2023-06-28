@@ -8,7 +8,7 @@ const NavBar = ({ token }) => {
   const handleClickUserProfile = () => {};
   const handleClickCardFeed = () => {};
   const handleClickNewCard = () => {};
-
+// updated NavBar
   return (
     <>
       <div>
