@@ -10,6 +10,7 @@ const Login = ({ setUser }) => {
   const [password, setPassword] = useState("");
   const baseURL = "https://cards-q6a8.onrender.com/";
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username);
@@ -47,8 +48,8 @@ const Login = ({ setUser }) => {
             <label htmlFor="password">Password: </label>
             <input
               type="password"
-              name="password-name"
-              id="password-register"
+              name="password"
+              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
