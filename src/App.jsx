@@ -83,7 +83,7 @@ function App() {
             />
           </Routes>
           <footer>
-            <button onClick={handleLogout}>Log Out</button>
+            <button onClick={() => handleLogout}>Log Out</button>
           </footer>
         </>
       ) : (
