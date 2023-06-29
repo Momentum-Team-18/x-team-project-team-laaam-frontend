@@ -22,15 +22,7 @@ const FriendList = ({ token, clickedUserName }) => {
 
   console.log(followers);
 
-  //   useEffect(() => {
-  //     axios
-  //       .delete(`${baseURL}api/unfollow_user/${follower.id}`, {
-  //         headers: {
-  //           Authorization: `Token ${token}`,
-  //         },
-  //       })
-  //   }, [token]);
-
+  
   return (
     <>
       <div className="followers">
@@ -46,4 +38,4 @@ const FriendList = ({ token, clickedUserName }) => {
   );
 };
 
-export default FriendList;
+export default FriendList
