@@ -22,6 +22,7 @@ const UserProfile = ({ token, username }) => {
       })
       .then((res) => {
         setProfileInfo(res.data);
+        // Not using This ^
         console.log("1st axios get request");
       });
   }, [token, username]);
