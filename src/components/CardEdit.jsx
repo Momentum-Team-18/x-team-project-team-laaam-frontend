@@ -1,6 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ReactCardFlip from "react-card-flip";
 
 const CardEdit = ({ token, username }) => {
   const { cardId } = useParams();
@@ -14,6 +15,7 @@ const CardEdit = ({ token, username }) => {
   const [sentByUser, setSentByUser] = useState("");
   const [sentToUser, setSentToUser] = useState("");
   const navigate = useNavigate();
+  const [isFlipped, setIsFlipped] = useState(false);
 
   console.log(cardId);
 
@@ -105,6 +107,8 @@ const CardEdit = ({ token, username }) => {
       setSentToUser(e.target.value);
     }
   };
+
+  const flipCard = () => setIsFlipped(!isFlipped);
 
   return (
     <>
@@ -215,35 +219,36 @@ const CardEdit = ({ token, username }) => {
           </form>
         </div>
       </div>
-      <div className="create-card-preview-container">
-        <div
-          className="create-card-preview"
-          style={{
-            backgroundColor: cardColor,
-            borderColor: borderColor,
-            borderStyle: borderStyle,
-            color: textColor,
-          }}
-        >
-          <div className="img">📷 {cardColor}</div>
-          <h1>{headline}</h1>
-          <p>{frontText}</p>
-        </div>
-        <br></br>
-        <div
-          className="create-card-preview"
-          style={{
-            backgroundColor: cardColor,
-            borderColor: borderColor,
-            borderStyle: borderStyle,
-            color: textColor,
-          }}
-        >
-          <div className="img"></div>
-          <p>{backText}</p>
-          <p>Created by: {username}</p>
-          <p>Sent to: {sentToUser}</p>
-        </div>
+      <div className="container">
+        <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+          <div
+            className="card"
+            onClick={flipCard}
+            style={{
+              backgroundColor: cardColor,
+              borderColor: borderColor,
+              borderStyle: borderStyle,
+              color: textColor,
+            }}
+          >
+            <h1>{headline}</h1>
+            <p>{frontText}</p>
+            <p>Created by: {username}</p>
+            <p>Sent to: {sentToUser}</p>
+          </div>
+          <div
+            className="card"
+            onClick={flipCard}
+            style={{
+              backgroundColor: cardColor,
+              borderColor: borderColor,
+              borderStyle: borderStyle,
+              color: textColor,
+            }}
+          >
+            <p>{backText}</p>
+          </div>
+        </ReactCardFlip>
       </div>
     </>
   );
