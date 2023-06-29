@@ -26,11 +26,27 @@ function App() {
   console.log(token);
   console.log(username);
 
+  const handleLogout = () => {
+    axios
+      .post(
+        "https://cards-q6a8.onrender.com/auth/token/logout/",
+        {},
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        setUser("", null);
+        navigate("/");
+      });
+  };
+
   return (
     <>
       <NavBar />
       <button onClick={handleLogout}>Log Out</button>
-
 
       {token ? (
         <>
