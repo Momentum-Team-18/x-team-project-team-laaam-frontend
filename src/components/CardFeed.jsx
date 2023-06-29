@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ReactCardFlip from "react-card-flip";
+import dayjs from "dayjs";
 
 const CardFeed = ({ token, username }) => {
   const [cards, setCards] = useState([]);
@@ -58,20 +59,21 @@ const CardFeed = ({ token, username }) => {
                 className="card"
                 onClick={() => flipCard(card.id)}
               >
-                {card.sent_by_user === username && (
-                  <>
-                    <button onClick={() => handleEdit(card.id)}>Edit</button>
-                    <br />
-                    <button onClick={() => handleDelete(card.id)}>
-                      Delete
-                    </button>
-                  </>
-                )}
-
                 <h1>{card.headline}</h1>
                 <p>{card.front_text}</p>
                 <p>Created by: {card.sent_by_user}</p>
                 <p>Sent to: {card.sent_to_user}</p>
+                {card.sent_by_user === username && (
+                  <>
+                    <div>
+                      <button onClick={() => handleEdit(card.id)}>Edit</button>
+                      <br />
+                      <button onClick={() => handleDelete(card.id)}>
+                        Delete
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
               <div
                 style={{
@@ -84,7 +86,10 @@ const CardFeed = ({ token, username }) => {
                 onClick={() => flipCard(card.id)}
               >
                 <h2>{card.inner_text}</h2>
-                <p>{card.date_created}</p>
+                <p>
+                  Card Creation Date:{" "}
+                  {dayjs(card.date_created).format("MM/DD/YYYY")}
+                </p>
               </div>
             </ReactCardFlip>
           ))}
