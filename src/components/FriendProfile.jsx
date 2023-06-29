@@ -6,18 +6,6 @@ import ReactCardFlip from "react-card-flip";
 import dayjs from "dayjs";
 import FollowButton from "./FollowButton";
 
-// GET REQUEST - USER INFO  - USER end point
-// USER CARD FEED
-// DELETE CARD FROM ARRAY
-//
-
-// put in right url and token
-// write a useEffect , make the get request, state variables , resposne setState
-
-// grab sent_by_user value from CardFeed
-// pass it to UserProfile
-// get request
-//
 const FriendProfile = ({ token, username }) => {
   const [profileInfo, setProfileInfo] = useState([]);
   const [userCards, setUserCards] = useState([]);
