@@ -2,8 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaUserCircle } from "react-icons/fa";
+import FollowButton from "./FollowButton";
 
-const FriendList = ({ token }) => {
+const FriendList = ({ token, clickedUserName }) => {
   const baseURL = "https://cards-q6a8.onrender.com/";
   const [followers, setFollowers] = useState([]);
 
@@ -37,8 +38,7 @@ const FriendList = ({ token }) => {
           <ul className="follow-card" key={follower.id}>
             <FaUserCircle className="avatar-userprofile-follow" />
             <h1>{follower.user_this_user_is_following}</h1>
-            <button className="follow-unfollow-btn">Remove</button>
-            {/* Delete in button */}
+    
           </ul>
         ))}
       </div>
