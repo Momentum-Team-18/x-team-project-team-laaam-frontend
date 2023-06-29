@@ -4,21 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReactCardFlip from "react-card-flip";
 import dayjs from "dayjs";
-import Followers from "./Followers";
-import FriendList from "./FriendList";
 
-// GET REQUEST - USER INFO  - USER end point
-// USER CARD FEED
-// DELETE CARD FROM ARRAY
-//
 
-// put in right url and token
-// write a useEffect , make the get request, state variables , resposne setState
-
-// grab sent_by_user value from CardFeed
-// pass it to UserProfile
-// get request
-//
 const UserProfile = ({ token, username }) => {
   const [profileInfo, setProfileInfo] = useState([]);
   const [userCards, setUserCards] = useState([]);
@@ -52,7 +39,7 @@ const UserProfile = ({ token, username }) => {
       });
   }, [token]);
 
-  // }]
+  
 
   console.log(token);
   console.log(username);
@@ -78,6 +65,7 @@ const UserProfile = ({ token, username }) => {
         <FaUserCircle className="avatar-userprofile" />
         {/* <h3>Bio:{bio}</h3> */}
         <br></br>
+        {/* < FollowButton /> */}
       </div>
       <div className="friend-links-container">
         <button

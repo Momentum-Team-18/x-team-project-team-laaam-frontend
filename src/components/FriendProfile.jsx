@@ -4,25 +4,15 @@ import { FaUserCircle } from "react-icons/fa";
 import axios from "axios";
 import ReactCardFlip from "react-card-flip";
 import dayjs from "dayjs";
+import FollowButton from "./FollowButton";
 
-// GET REQUEST - USER INFO  - USER end point
-// USER CARD FEED
-// DELETE CARD FROM ARRAY
-//
-
-// put in right url and token
-// write a useEffect , make the get request, state variables , resposne setState
-
-// grab sent_by_user value from CardFeed
-// pass it to UserProfile
-// get request
-//
 const FriendProfile = ({ token, username }) => {
   const [profileInfo, setProfileInfo] = useState([]);
   const [userCards, setUserCards] = useState([]);
   const [flippedCardId, setFlippedCardId] = useState(null);
   const { userId } = useParams();
   const navigate = useNavigate();
+  const [clickedUserName, setClickedUserName] = useState([]);
 
   const baseURL = "https://cards-q6a8.onrender.com/";
 
@@ -36,9 +26,12 @@ const FriendProfile = ({ token, username }) => {
       .then((res) => {
         setProfileInfo(res.data);
         setUserCards(res.data.cards_sent);
+        setClickedUserName(res.data.username);
         console.log("axios request");
       });
   }, [token]);
+
+  console.log(clickedUserName);
 
   console.log(`We are looking at ${profileInfo.username} cards`);
   console.log(userCards);
@@ -56,22 +49,6 @@ const FriendProfile = ({ token, username }) => {
     navigate("/friendlist");
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${baseURL}api/cards/sent`, {
-  //       headers: {
-  //         Authorization: `Token ${token}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setUserCards(res.data);
-  //       console.log("axios request");
-  //     });
-  // }, [token]);
-
-  // console.log(token);
-  // console.log(username);
-  // console.log(profileInfo);
   return (
     <>
       <div>
@@ -79,7 +56,7 @@ const FriendProfile = ({ token, username }) => {
         <FaUserCircle className="avatar-userprofile" />
         <br></br>
         <br></br>
-        <button> FOLLOW </button>
+        <FollowButton token={token} clickedUserName={clickedUserName}/>
         <br></br>
       </div>
       <div className="friend-links-container">
