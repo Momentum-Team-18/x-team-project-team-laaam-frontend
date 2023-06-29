@@ -132,7 +132,7 @@ const NewCard = ({ token, username }) => {
                 <option value="">--Please choose a color--</option>
                 <option value="Blue">Blue</option>
                 <option value="Yellow">Yellow</option>
-                <option value="Green">Green</option>
+                <option value="Purple">Green</option>
               </select>
               <br></br>
 
@@ -165,7 +165,7 @@ const NewCard = ({ token, username }) => {
               >
                 <option value="">--Please choose a color--</option>
                 <option value="Blue">Blue</option>
-                <option value="Green">Green</option>
+                <option value="Orange">Orange</option>
                 <option value="Purple">Purple</option>
               </select>
               <br></br>
