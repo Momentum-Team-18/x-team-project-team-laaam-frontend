@@ -47,6 +47,7 @@ function App() {
   return (
     <>
       <NavBar />
+      <button onClick={handleLogout}>Log Out</button>
 
       {token ? (
         <>
@@ -82,9 +83,6 @@ function App() {
               element={<DeleteCard token={token} username={username} />}
             />
           </Routes>
-          <footer>
-            <button onClick={() => handleLogout}>Log Out</button>
-          </footer>
         </>
       ) : (
         <>

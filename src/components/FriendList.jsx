@@ -34,12 +34,12 @@ const FriendList = ({ token }) => {
     <>
       <div className="followers">
         {followers.map((follower) => (
-          <ul className="follow-card" key={follower.id}>
+          <div className="follow-card" key={follower.id}>
             <FaUserCircle className="avatar-userprofile-follow" />
             <h1>{follower.user_this_user_is_following}</h1>
             <button className="follow-unfollow-btn">Remove</button>
             {/* Delete in button */}
-          </ul>
+          </div>
         ))}
       </div>
     </>

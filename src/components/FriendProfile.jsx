@@ -56,22 +56,6 @@ const FriendProfile = ({ token, username }) => {
     navigate("/friendlist");
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${baseURL}api/cards/sent`, {
-  //       headers: {
-  //         Authorization: `Token ${token}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setUserCards(res.data);
-  //       console.log("axios request");
-  //     });
-  // }, [token]);
-
-  // console.log(token);
-  // console.log(username);
-  // console.log(profileInfo);
   return (
     <>
       <div>
