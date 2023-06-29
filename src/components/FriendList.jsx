@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaUserCircle } from "react-icons/fa";
@@ -19,15 +19,16 @@ const FriendList = ({ token }) => {
       });
   }, [token]);
 
-//   useEffect(() => {
-//     axios
-//       .delete(`${baseURL}api/unfollow_user/${follower.id}`, {
-//         headers: {
-//           Authorization: `Token ${token}`,
-//         },
-//       })
-//   }, [token]);
+  console.log(followers);
 
+  //   useEffect(() => {
+  //     axios
+  //       .delete(`${baseURL}api/unfollow_user/${follower.id}`, {
+  //         headers: {
+  //           Authorization: `Token ${token}`,
+  //         },
+  //       })
+  //   }, [token]);
 
   return (
     <>
