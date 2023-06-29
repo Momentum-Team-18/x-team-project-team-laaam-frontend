@@ -26,7 +26,7 @@ const CardFeed = ({ token, username }) => {
 
   const flipCard = (id) => {
     setFlippedCardId(id === flippedCardId ? null : id);
-    console.log(`hi the id is: ${id}`);
+    console.log(`hi the card id is: ${id}`);
   };
 
   const handleEdit = (cardId) => {
