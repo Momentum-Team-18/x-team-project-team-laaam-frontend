@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
@@ -27,30 +26,16 @@ function App() {
   console.log(token);
   console.log(username);
 
-  const handleLogout = () => {
-    axios
-      .post(
-        "https://cards-q6a8.onrender.com/auth/token/logout/",
-        {},
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
-      )
-      .then(() => {
-        setUser("", null);
-        navigate("/");
-      });
-  };
-
   return (
     <>
       <NavBar />
       <button onClick={handleLogout}>Log Out</button>
 
+
       {token ? (
         <>
+          <NavBar />
+
           <Routes>
             <Route
               path="/"
@@ -66,10 +51,7 @@ function App() {
             />
             <Route path="/followers" element={<Followers token={token} />} />
             <Route path="/friendlist" element={<FriendList token={token} />} />
-            <Route
-              path="/friendprofile/:userId"
-              element={<FriendProfile token={token} />}
-            />
+            <Route path="/friendprofile" element={FriendProfile} />
             <Route
               path="/userprofile"
               element={<UserProfile token={token} username={username} />}

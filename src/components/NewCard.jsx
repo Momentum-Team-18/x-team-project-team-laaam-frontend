@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import ReactCardFlip from "react-card-flip";
+import { NavLink, Link } from "react-router-dom";
 
 // pass token
 // create card, load preview
@@ -16,9 +15,6 @@ const NewCard = ({ token, username }) => {
   const [textColor, setTextColor] = useState("");
   const [borderStyle, setBorderStyle] = useState("");
   const [sentToUser, setSentToUser] = useState("");
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const navigate = useNavigate();
 
   const baseURL = "https://cards-q6a8.onrender.com/";
 
@@ -53,7 +49,7 @@ const NewCard = ({ token, username }) => {
       )
       .then((res) => {
         console.log(res.data);
-        setCardColor(null);
+        setCardColor("");
         setHeadline("");
         setFont("");
         setBorderColor("");
@@ -62,7 +58,6 @@ const NewCard = ({ token, username }) => {
         setBackText("");
         setBorderStyle("");
         setSentToUser("");
-        navigate("/");
       })
       .catch((error) => {
         console.error(error);
@@ -99,8 +94,6 @@ const NewCard = ({ token, username }) => {
     }
   };
 
-  const flipCard = () => setIsFlipped(!isFlipped);
-
   return (
     // return a form
     // 3 drop downs, 3 character fields
@@ -132,7 +125,9 @@ const NewCard = ({ token, username }) => {
                 <option value="">--Please choose a color--</option>
                 <option value="Blue">Blue</option>
                 <option value="Yellow">Yellow</option>
+
                 <option value="Purple">Purple</option>
+
               </select>
               <br></br>
 
@@ -147,7 +142,7 @@ const NewCard = ({ token, username }) => {
                 <option value="Solid">Solid</option>
               </select>
 
-              {/* <label for="font-select">Font </label>
+              <label for="font-select">Font </label>
               <select
                 id="font-select"
                 onChange={(e) => handleChange("font", e)}
@@ -156,7 +151,7 @@ const NewCard = ({ token, username }) => {
                 <option value="Times New Roman">Times New Roman</option>
                 <option value="Arial">Arial</option>
               </select>
-              <br></br> */}
+              <br></br>
 
               <label for="fontColor-select"> Font Color</label>
               <select
@@ -165,7 +160,7 @@ const NewCard = ({ token, username }) => {
               >
                 <option value="">--Please choose a color--</option>
                 <option value="Blue">Blue</option>
-                <option value="Orange">Orange</option>
+                <option value="Green">Green</option>
                 <option value="Purple">Purple</option>
                 <option value="Yellow">Yellow</option>
               </select>
@@ -219,38 +214,37 @@ const NewCard = ({ token, username }) => {
           </div>
         </div>
       </div>
-      <div className="container">
-        <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-          <div
-            className="card"
-            onClick={flipCard}
-            style={{
-              backgroundColor: cardColor,
-              borderColor: borderColor,
-              borderStyle: borderStyle,
-              fontFamily: font,
-              color: textColor,
-            }}
-          >
-            <h1>{headline}</h1>
-            <p>{frontText}</p>
-            <p>Created by: {username}</p>
-            <p>Sent to: {sentToUser}</p>
-          </div>
-          <div
-            className="card"
-            onClick={flipCard}
-            style={{
-              backgroundColor: cardColor,
-              borderColor: borderColor,
-              borderStyle: borderStyle,
-              fontFamily: font,
-              color: textColor,
-            }}
-          >
-            <p>{backText}</p>
-          </div>
-        </ReactCardFlip>
+      <div className="create-card-preview-container">
+        <div
+          className="create-card-preview"
+          style={{
+            backgroundColor: cardColor,
+            borderColor: borderColor,
+            borderStyle: borderStyle,
+            fontFamily: font,
+            color: textColor,
+          }}
+        >
+          <div className="img">📷 {cardColor}</div>
+          <h1>{headline}</h1>
+          <p>{frontText}</p>
+        </div>
+        <br></br>
+        <div
+          className="create-card-preview"
+          style={{
+            backgroundColor: cardColor,
+            borderColor: borderColor,
+            borderStyle: borderStyle,
+            fontFamily: font,
+            color: textColor,
+          }}
+        >
+          <div className="img"></div>
+          <p>{backText}</p>
+          <p>Created by: {username}</p>
+          <p>Sent to: {sentToUser}</p>
+        </div>
       </div>
     </>
   );
