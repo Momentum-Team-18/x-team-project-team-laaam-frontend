@@ -1,28 +1,33 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Times, serif, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: rgba(28, 28, 28, 0.87);
-  background-color: #ffffff;
+  /* background-color: #946060; */
+  background-image: url(./images/lamb.png);
+  background-repeat: no-repeat;
 }
 
 .container {
   display: flex;
-  padding: 20px;
+  padding: px;
   margin: 10px;
-  background-color: rgb(255, 255, 255);
+
+  /* background-color: rgb(255, 255, 255); */
   justify-content: center;
   flex-wrap: wrap;
 }
 .card {
   border: 2px black solid;
   padding: 10px;
-  margin: 10px;
+  margin: 30px;
   background-color: rgb(255, 255, 255);
-  min-width: 600px;
-  min-height: 600px;
-  max-width: 600px;
-  max-height: 600px;
+  min-width: 425px;
+  min-height: 425px;
+  max-width: 425px;
+  max-height: 425px;
+
   justify-content: center;
 }
 

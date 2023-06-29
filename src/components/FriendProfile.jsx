@@ -45,29 +45,7 @@ const FriendProfile = ({ token, username }) => {
       });
   }, [token]);
 
-  //       const cards =[{
-  //     "id": 1,
-  //     "sent_by_user": "admin",
-  //     "sent_to_user": "admin",
-  //     "image_urls": null,
-  //     "date_created": "2023-06-26T23:24:53.567838Z",
-  //     "privacy": true,
-  //     "headline": "Hello World!",
-  //     "front_text": "",
-  //     "inner_text": "1",
-  //     "likes": null,
-  //     "background_color": null,
-  //     "border_color": null,
-  //     "border_decor": null,
-  //     "font_color": null,
-  //     "header_font": null,
-  //     "front_text_font": null,
-  //     "back_text_font": null
-  // }]
 
-  console.log(token);
-  console.log(username);
-  console.log(profileInfo);
   return (
     <>
       <div>

@@ -28,6 +28,10 @@ function App() {
 
   return (
     <>
+      <NavBar />
+      <button onClick={handleLogout}>Log Out</button>
+
+
       {token ? (
         <>
           <NavBar />

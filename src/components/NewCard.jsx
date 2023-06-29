@@ -125,7 +125,9 @@ const NewCard = ({ token, username }) => {
                 <option value="">--Please choose a color--</option>
                 <option value="Blue">Blue</option>
                 <option value="Yellow">Yellow</option>
-                <option value="Green">Green</option>
+
+                <option value="Purple">Purple</option>
+
               </select>
               <br></br>
 
@@ -151,7 +153,7 @@ const NewCard = ({ token, username }) => {
               </select>
               <br></br>
 
-              <label for="borderColor-select"> Font Color</label>
+              <label for="fontColor-select"> Font Color</label>
               <select
                 id="textColor-select"
                 onChange={(e) => handleChange("textColor", e)}
@@ -160,6 +162,7 @@ const NewCard = ({ token, username }) => {
                 <option value="Blue">Blue</option>
                 <option value="Green">Green</option>
                 <option value="Purple">Purple</option>
+                <option value="Yellow">Yellow</option>
               </select>
               <br></br>
               <label for="headline">Headline </label>
