@@ -78,8 +78,6 @@ const UserProfile = ({ token, username }) => {
         <FaUserCircle className="avatar-userprofile" />
         {/* <h3>Bio:{bio}</h3> */}
         <br></br>
-        <button> FOLLOW </button>
-        <br></br>
       </div>
       <div className="friend-links-container">
         <button

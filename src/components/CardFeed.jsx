@@ -64,9 +64,11 @@ const CardFeed = ({ token, username }) => {
               >
                 <h1>{card.headline}</h1>
                 <p>{card.front_text}</p>
-                <button onClick={() => handleUserProfile(card.sent_by_user)}>
-                  Created by: {card.sent_by_user}
-                </button>
+                <div>
+                  <button onClick={() => handleUserProfile(card.sent_by_user)}>
+                    Created by: {card.sent_by_user}
+                  </button>
+                </div>
                 <p>Sent to: {card.sent_to_user}</p>
                 {card.sent_by_user === username && (
                   <>

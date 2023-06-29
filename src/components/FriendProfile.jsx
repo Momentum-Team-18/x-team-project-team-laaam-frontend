@@ -22,6 +22,8 @@ const FriendProfile = ({ token, username }) => {
   const [userCards, setUserCards] = useState([]);
   const [flippedCardId, setFlippedCardId] = useState(null);
   const { userId } = useParams();
+  const navigate = useNavigate();
+
   const baseURL = "https://cards-q6a8.onrender.com/";
 
   useEffect(() => {
@@ -44,6 +46,14 @@ const FriendProfile = ({ token, username }) => {
   const flipCard = (id) => {
     setFlippedCardId(id === flippedCardId ? null : id);
     console.log(`hi this users card has an id of: ${id}`);
+  };
+
+  const handleClickFollowers = () => {
+    navigate("/followers");
+    console.log(handleClickFollowers);
+  };
+  const handleClickFriendList = () => {
+    navigate("/friendlist");
   };
 
   // useEffect(() => {
@@ -73,8 +83,18 @@ const FriendProfile = ({ token, username }) => {
         <br></br>
       </div>
       <div className="friend-links-container">
-        <button className="following-btn">PEROPLE USER FOLLOW</button>
-        <button className="following-btn">PEOPLE WHO FOLLOW USER</button>
+        <button
+          onClick={() => handleClickFriendList()}
+          className="following-btn"
+        >
+          PEROPLE USER FOLLOW
+        </button>
+        <button
+          onClick={() => handleClickFollowers()}
+          className="following-btn"
+        >
+          PEOPLE WHO FOLLOW USER
+        </button>
       </div>
       <div className="container">
         {userCards.map((card) => (
