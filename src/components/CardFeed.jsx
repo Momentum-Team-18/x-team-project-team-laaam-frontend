@@ -37,6 +37,10 @@ const CardFeed = ({ token, username }) => {
     navigate(`/delete/${cardId}`);
   };
 
+  const handleUserProfile = (userId) => {
+    navigate(`/friendprofile/${userId}`);
+  };
+
   return (
     <>
       <div>
@@ -60,7 +64,9 @@ const CardFeed = ({ token, username }) => {
               >
                 <h1>{card.headline}</h1>
                 <p>{card.front_text}</p>
-                <p>Created by: {card.sent_by_user}</p>
+                <button onClick={() => handleUserProfile(card.sent_by_user)}>
+                  Created by: {card.sent_by_user}
+                </button>
                 <p>Sent to: {card.sent_to_user}</p>
                 {card.sent_by_user === username && (
                   <>

@@ -65,7 +65,10 @@ function App() {
             />
             <Route path="/followers" element={<Followers token={token} />} />
             <Route path="/friendlist" element={<FriendList token={token} />} />
-            <Route path="/friendprofile" element={FriendProfile} />
+            <Route
+              path="/friendprofile/:userId"
+              element={<FriendProfile token={token} />}
+            />
             <Route
               path="/userprofile"
               element={<UserProfile token={token} username={username} />}
